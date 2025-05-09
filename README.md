@@ -2,16 +2,24 @@
 
 ## Sobre o Projeto
 
-Nome: [Nome do Projeto]
+Nome: UNICAR -ride 
 
-[Descrição breve do projeto, seu propósito e funcionalidades principais]
+Um app pensado para facilitar a vida de estudantes, nosso app busca ser em primeira mão solidário, funcionará como uma carona dentro da universidade, uma melhor mobilidade para seus estudantes.
+
 
 ## Equipe
 
-- [Nome do Membro 1] - [Papel/Responsabilidade]
-- [Nome do Membro 2] - [Papel/Responsabilidade]
-- [Nome do Membro 3] - [Papel/Responsabilidade]
-- [Nome do Membro n] - [Papel/Responsabilidade]
+  -Juliana M;
+  
+  -Luis Gustavo Quirino;
+  
+  -Wagner;
+  
+  -Mateus Tucunduva;
+  
+  -Mateus Cordeiro;
+  
+  -Luiz Gustavo Pereira 
 
 ## Tecnologias Utilizadas
 
@@ -23,7 +31,7 @@ Nome: [Nome do Projeto]
 
 - `/docs`: Documentação do projeto
 - `/src`: Código-fonte da aplicação
-- `/diario`: Registros semanais do progresso
+- `/diario_de_bordo.md`: Registros semanais do progresso
 - `/relatorios`: Relatórios de entrega parcial e final
 - `/reunioes`: Atas de reuniões e retrospectivas
 
