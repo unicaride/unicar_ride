@@ -41,7 +41,8 @@ Um app pensado para facilitar a vida de estudantes, nosso app busca ser em prime
 
 ## Status do Projeto
 
-[Badges do status atual, progresso, ou outras métricas relevantes]
+(09/O5/25) Atá no dia de hoje já foram criados as histórias de usuário, requisitos funcionais, requisitos não funcionais, a interface de usuário.
+
 
 ## Entregas
 
