@@ -23,8 +23,8 @@ Um app pensado para facilitar a vida de estudantes, nosso app busca ser em prime
 
 ## Tecnologias Utilizadas
 
-- [Tecnologia 1]
-- [Tecnologia 2]
+- Expo Go
+- React Native
 - [Tecnologia 3]
 
 ## Estrutura do Repositório
