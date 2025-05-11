@@ -2,7 +2,7 @@
 ## Grupo - UNICAR
 ### Integrantes:  Juliana M, Luis Gustavo Quirino, Wagner, Mateus Tucunduva, Mateus Cordeiro, Luiz Gustavo Pereira, Kaio Junior
 
-> ## Semana 1 - (21/03/25)
+> ## Semana 1 - (25/03/25)
 > 
 Membros presentes - Juliana M, Luis Gustavo Quirino, Wagner, Mateus Tucunduva, Mateus Cordeiro, Luiz Gustavo Pereira, Kaio Junior
 
@@ -12,24 +12,25 @@ Introdução á Engenharia de softwarer
  #### Atividades realizadas:
  
 1. Criação do repositório no github e do jira.
+2. Documento de Visão Preliminar do Projeto
 
-
-> ## Semana 2 - (28/03/25)
+> ## Semana 2 - (02/03/25)
 
 Membros presentes - Juliana M, Luis Gustavo Quirino, Wagner, Mateus Tucunduva, Mateus Cordeiro, Luiz Gustavo Pereira, Kaio Junior
 
-Tema da semana: Metodos ÀFeis e Scrum
+Tema da semana: Metodos Àgeis e Scrum
 
 #### Atividades realizadas:  
-1. 
+1. Estudado metodos ageis e scrum
 
-> ## Semana 3 - (04/04/25)
+> ## Semana 3 - (09/04/25)
 Membros presentes - Juliana M, Luis Gustavo Quirino, Wagner, Mateus Tucunduva, Mateus Cordeiro, Luiz Gustavo Pereira, Kaio Junior
 
 Tema da semana: Analise de requisitos
 
 #### Atividades realizadas 
-1.
+1. Hitórias de usuário 
+
 
 > ## Semana 4 - (11/04/25)
 Membros presentes - Juliana M, Luis Gustavo Quirino, Wagner, Mateus Tucunduva, Mateus Cordeiro, Luiz Gustavo Pereira, Kaio Junior
@@ -38,7 +39,7 @@ Tema da semana:
 Modelagem de Requisitos e Planejamento
 
 #### Atividades realizadas 
-1.
+1.  Modelagem de requisitos (que foi endregue com atraso, no dia 10/04)
 
 > ## Semana 5 - (09/05/25)
 Membros presentes - Juliana M, Luis Gustavo Quirino, Wagner, Mateus Tucunduva, Mateus Cordeiro, Luiz Gustavo Pereira, Kaio Junior
@@ -47,5 +48,5 @@ Tema da semana:
 Princípios de Design de Softwere
 
 ### Atividades realizadas 
-1. Formatar o projeto no github 
+1. Formatar projeto seguindo template
 
