@@ -2,12 +2,14 @@
 Grupo - UNICAR
 Integrantes:  Juliana M, Luis Gustavo Quirino, Wagner, Mateus Tucunduva, Mateus Cordeiro, Luiz Gustavo Pereira, Kaio Junior
 
-## Semana 1 - (21/03/25)
+> ## Semana 1 - (21/03/25)
+> 
 Membros presentes - Juliana M, Luis Gustavo Quirino, Wagner, Mateus Tucunduva, Mateus Cordeiro, Luiz Gustavo Pereira, Kaio Junior
 Tema da semana :
 Introdução á Engenharia de softwarer
 
-##Atividades realizadas 
+ #### Atividades realizadas:
+ 
 1 - Criação do repositório no github e do jira.
 
 
@@ -17,7 +19,7 @@ Membros presentes - Juliana M, Luis Gustavo Quirino, Wagner, Mateus Tucunduva, M
 Tema da semana:
 Metodos ÀFeis e Scrum
 
-###Atividades realizadas 
+#### Atividades realizadas 
 
 
 ## Semana 3 - (04/04/25)
@@ -45,4 +47,5 @@ Tema da semana:
 Princípios de Design de Softwere
 
 ###Atividades realizadas 
+
 
