@@ -2,7 +2,7 @@
 ## Grupo - UNICAR
 ### Integrantes:  Juliana M, Luis Gustavo Quirino, Wagner, Mateus Tucunduva, Mateus Cordeiro, Luiz Gustavo Pereira, Kaio Junior
 
-> ## Semana 1 - (25/03/25)
+> ## Semana 1  inicio - (25/03/25)
 > 
 Membros presentes - Juliana M, Luis Gustavo Quirino, Wagner, Mateus Tucunduva, Mateus Cordeiro, Luiz Gustavo Pereira, Kaio Junior
 
