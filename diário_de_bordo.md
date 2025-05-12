@@ -39,8 +39,7 @@ Tema da semana:
 Modelagem de Requisitos e Planejamento
 
 #### Atividades realizadas 
-1.  Modelagem de requisitos (que foi endregue com atraso, no dia 10/04)
-
+1.  Modelagem de requisitos
 > ## Semana 5 - (09/05/25)
 Membros presentes - Juliana M, Luis Gustavo Quirino, Wagner, Mateus Tucunduva, Mateus Cordeiro, Luiz Gustavo Pereira, Kaio Junior
 
@@ -49,4 +48,5 @@ Princípios de Design de Softwere
 
 ### Atividades realizadas 
 1. Formatar projeto seguindo template
+2. atualizações da documentação no repositório github
 
