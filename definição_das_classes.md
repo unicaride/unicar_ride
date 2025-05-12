@@ -1,10 +1,10 @@
 @startuml Diagrama de Classes - App Carona Universitária
 !theme materia
 
-' Definição das Classes
+```` Definição das Classes;
 
-#### class*Usuario* {
-  - idUsuario: Integer
+
+class*Usuario* { -->   - idUsuario: Integer;
   - nome: String
   - email: String
   - senhaCriptografada: String
@@ -16,6 +16,7 @@
   - editarPerfil(novosDados: Map)
   - verificarIdentidade()
 }
+``` 
 
 
 
