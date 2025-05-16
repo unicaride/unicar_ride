@@ -1,80 +1,94 @@
 # Caso de Uso: [ID]
 
-## Nome
+Caso de Uso: Buscar Caronas Disponíveis
+1. Nome do Caso de Uso
+UC001 – Buscar Caronas Disponíveis
 
-[Nome do caso de uso]
+2. Descrição
+Este caso de uso permite que um passageiro busque caronas disponíveis com base em local de partida e destino, visualizando informações como nome do motorista, horário e vagas disponíveis.
 
-## Descrição
+3. Atores
+Ator Primário: Passageiro
 
-[Descrição breve do caso de uso]
+Atores Secundários: Motorista (fornece as caronas disponíveis)
 
-## Atores
+4. Pré-condições
+O usuário está autenticado no sistema.
 
-- [Ator primário]
-- [Atores secundários, se houver]
+Existem caronas cadastradas no sistema.
 
-## Pré-condições
+5. Fluxo Básico
+O passageiro acessa a tela principal e seleciona "Buscar Caronas".
 
-1. [Pré-condição 1]
-2. [Pré-condição 2]
-3. [Pré-condição n]
+O sistema exibe um formulário com os campos:
 
-## Fluxo Básico
+Local de Partida (obrigatório)
 
-1. [Passo 1]
-2. [Passo 2]
-3. [Passo n]
+Destino (obrigatório)
 
-## Fluxos Alternativos
+O passageiro preenche os campos e clica em "Buscar".
 
-### [Alternativa 1]
+O sistema retorna uma lista de caronas disponíveis, contendo:
 
-1. [Passo 1]
-2. [Passo 2]
-3. [Passo n]
+Nome do motorista
 
-### [Alternativa 2]
+Horário da carona
 
-1. [Passo 1]
-2. [Passo 2]
-3. [Passo n]
+Vagas disponíveis
 
-## Fluxos de Exceção
+O passageiro seleciona uma carona e clica em "Solicitar Vaga".
 
-### [Exceção 1]
+O sistema registra a solicitação e notifica o motorista.
 
-1. [Passo 1]
-2. [Passo 2]
-3. [Passo n]
+6. Fluxos Alternativos
+Alternativa 1: Filtros Adicionais
+No passo 2, o passageiro pode aplicar filtros adicionais (ex.: data, horário).
 
-### [Exceção 2]
+O sistema atualiza a lista de caronas conforme os filtros selecionados.
 
-1. [Passo 1]
-2. [Passo 2]
-3. [Passo n]
+Alternativa 2: Nenhuma Carona Encontrada
+No passo 4, se não houver caronas disponíveis, o sistema exibe:
 
-## Pós-condições
+"Nenhuma carona encontrada para o trajeto selecionado."
 
-1. [Pós-condição 1]
-2. [Pós-condição 2]
-3. [Pós-condição n]
+O passageiro pode ajustar os critérios de busca e tentar novamente.
 
-## Requisitos Relacionados
+7. Fluxos de Exceção
+Exceção 1: Campos Obrigatórios Não Preenchidos
+No passo 3, se o passageiro não preencher os campos obrigatórios, o sistema exibe:
 
-- [Requisito 1]
-- [Requisito 2]
-- [Requisito n]
+"Preencha o local de partida e destino para buscar caronas."
 
-## Interface de Usuário
+O sistema impede a busca até que os campos sejam preenchidos.
 
-[Descrição ou referência a protótipos/mockups]
+Exceção 2: Falha na Conexão
+No passo 4, se houver falha na conexão, o sistema exibe:
 
-## Diagrama
+"Não foi possível buscar caronas. Verifique sua conexão e tente novamente."
 
-```mermaid
-flowchart TD
-        A(["Start"])
-        A --> B{"Decision"}
-        B --> C["Option A"]
-        B --> D["Option B"]
-```
+8. Pós-condições
+O passageiro visualiza a lista de caronas disponíveis.
+
+Se uma solicitação for enviada, o motorista é notificado.
+
+9. Requisitos Relacionados
+RF001: Buscar caronas por local de partida e destino.
+
+RF008: Motorista pode criar ofertas de carona.
+
+RNF002: Segurança na autenticação do usuário.
+
+10. Interface de Usuário
+Tela de Busca:
+
+Campos de texto para Local de Partida e Destino.
+
+Botão "Buscar".
+
+Lista de resultados com:
+
+Foto e nome do motorista.
+
+Horário e vagas disponíveis.
+
+Botão "Solicitar Vaga".
