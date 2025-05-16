@@ -91,8 +91,8 @@ Foto e nome do motorista.
 
 
 
->> Caso de Uso: Pagamento Integrado (PIX/Cartão)
->> 
+> # Caso de Uso: Pagamento Integrado (PIX/Cartão)
+>
 1. Nome do Caso de Uso
 UC002 – Realizar Pagamento da Carona
 
@@ -205,7 +205,7 @@ Horário e vagas disponíveis.
 
 Botão "Solicitar Vaga".
 
->> Caso de Uso: Gerenciar Perfil do Usuário
+> # Caso de Uso: Gerenciar Perfil do Usuário
 >> 
 1. Nome do Caso de Uso
 UC003 – Gerenciar Perfil do Usuário
@@ -430,3 +430,416 @@ Senha deve conter: 8+ caracteres, 1 número e 1 caractere especial
 Contas não verificadas em 7 dias são excluídas automaticamente
 
 Motoristas precisam ter CNH válida e documento com foto legível
+
+> # Caso de Uso: Aceitar ou Recusar Solicitações de Carona
+1. Nome do Caso de Uso
+UC005 - Gerenciar Solicitações de Carona
+
+2. Descrição
+Permite que motoristas visualizem e respondam às solicitações de passageiros para suas caronas oferecidas, podendo aceitar ou recusar cada pedido individualmente.
+
+3. Atores
+Ator Primário: Motorista
+
+Atores Secundários:
+
+Passageiro (solicitante)
+
+Sistema de Notificações
+
+4. Pré-condições
+O usuário está autenticado como motorista
+
+Existe pelo menos uma carona criada pelo motorista
+
+Há solicitações pendentes para essa carona
+
+5. Fluxo Básico
+O motorista acessa a seção "Minhas Caronas"
+
+Seleciona a carona específica com solicitações pendentes
+
+O sistema exibe a lista de solicitantes com:
+
+Nome e foto do passageiro
+
+Curso/faculdade (se disponível)
+
+Avaliação média (estrelas)
+
+Para cada solicitação, o motorista pode:
+
+Clicar em "Aceitar" para confirmar a vaga
+
+Clicar em "Recusar" para negar a solicitação
+
+O sistema atualiza o status e notifica o passageiro
+
+6. Fluxos Alternativos
+Alternativa 1: Visualizar Perfil Completo do Passageiro
+No passo 3, o motorista clica no nome do passageiro
+
+O sistema exibe perfil completo com:
+
+Histórico de caronas anteriores
+
+Comentários de avaliações
+
+Informações de contato (se permitido)
+
+Alternativa 2: Vagas Esgotadas
+Se todas as vagas já estiverem preenchidas:
+
+O sistema desabilita novos "Aceitar"
+
+Exibe: "Todas as vagas já foram preenchidas"
+
+7. Fluxos de Exceção
+Exceção 1: Solicitação Já Respondida
+Se outro dispositivo já tiver respondido:
+
+Exibe: "Esta solicitação já foi processada"
+
+Atualiza a lista em tempo real
+
+Exceção 2: Conexão Perdida
+Se a conexão falhar durante o processo:
+
+Mantém ações locais e sincroniza quando reconectar
+
+Exibe: "Conectando... suas ações serão salvas"
+
+8. Pós-condições
+Para aceites:
+
+Passageiro recebe confirmação
+
+Vaga é reservada oficialmente
+
+Sistema inicia processo de pagamento
+
+Para recusas:
+
+Passageiro recebe notificação
+
+Solicitação é arquivada
+
+9. Requisitos Relacionados
+RF005: Motorista gerencia solicitações
+
+RF001: Passageiro busca caronas
+
+RF002: Pagamento após aceite
+
+10. Interface de Usuário
+Tela de Solicitações:
+
+Lista com cards de cada passageiro
+
+Botões "Aceitar" (verde) e "Recusar" (vermelho)
+
+Contador "Vagas: 2/4"
+
+Notificação para Passageiro:
+
+Push notification: "Sua solicitação foi [aceita/recusada] por [Motorista]"
+
+Regras de Negócio:
+
+Motorista tem 24h para responder antes da solicitação expirar
+
+Passageiros recusados podem solicitar outras caronas
+
+Aceite gera obrigação de pagamento pelo passageiro
+
+
+> # Caso de Uso: Avaliar Outro Usuário após Carona
+1. Nome do Caso de Uso
+UC006 - Avaliar Participante da Carona
+
+2. Descrição
+Permite que usuários (passageiros e motoristas) avaliem uns aos outros após a conclusão de uma carona, atribuindo notas de 1 a 5 estrelas e comentários opcionais, contribuindo para a reputação no sistema.
+
+3. Atores
+Ator Primário: Usuário (Passageiro ou Motorista)
+
+Ator Secundário: Sistema de Reputação
+
+4. Pré-condições
+A carona foi concluída (status "Finalizada")
+
+O usuário ainda não avaliou o outro participante
+
+O usuário está autenticado no sistema
+
+5. Fluxo Básico
+Após 1 hora da finalização da carona, o sistema envia notificação:
+"Avalie sua experiência com [Nome do Participante]"
+
+O usuário acessa a seção "Histórico de Caronas"
+
+Seleciona a carona concluída e clica em "Avaliar"
+
+O sistema exibe formulário com:
+
+Seletor de 1-5 estrelas (obrigatório)
+
+Campo de texto para comentário (opcional, até 200 caracteres)
+
+O usuário preenche a avaliação e clica em "Enviar"
+
+O sistema:
+
+Atualiza a média do participante avaliado
+
+Armazena a avaliação no histórico
+
+Notifica o avaliado sobre a nova avaliação
+
+6. Fluxos Alternativos
+Alternativa 1: Avaliação Anônima
+Para avaliações negativas (≤ 2 estrelas):
+
+O sistema oferece opção "Enviar anonimamente"
+
+Comentários não identificam o avaliador
+
+Alternativa 2: Edição de Avaliação
+Se o usuário enviar por engano:
+
+Permite editar dentro de 2 horas após envio
+
+Após este período, avaliação torna-se permanente
+
+7. Fluxos de Exceção
+Exceção 1: Tentativa de Avaliação Antecipada
+Se tentar avaliar antes da carona terminar:
+
+Sistema bloqueia com mensagem:
+"Avalie apenas após o término da carona"
+
+Exceção 2: Conexão Interrompida
+Se falhar durante o envio:
+
+Salva rascunho localmente
+
+Exibe: "Avaliação não enviada. Tentar novamente?"
+
+8. Pós-condições
+A avaliação é vinculada permanentemente ao perfil do avaliado
+
+A média de estrelas é recalculada automaticamente
+
+O avaliador não pode reavaliar o mesmo usuário para aquela carona
+
+9. Requisitos Relacionados
+RF006: Avaliação pós-carona
+
+RF003: Exibição no perfil
+
+RNF003: Notificações em tempo real
+
+10. Interface de Usuário
+Tela de Avaliação:
+[Ícone de estrelas (1-5 interativas)]  
+[Campo de texto: "Compartilhe sua experiência (opcional)"]  
+[Contador: "200 caracteres restantes"]  
+[Checkbox: "Enviar anonimamente" (se ≤2 estrelas)]  
+[Botão "Enviar Avaliação"]  
+Notificação para o Avaliado:
+"Você recebeu uma nova avaliação de [X estrelas]!"  
+[Visualizar comentário]  
+Regras de Negócio:
+
+Período de avaliação: até 7 dias após a carona
+
+Média calculada com peso temporal (avaliações recentes têm maior impacto)
+
+Comentários ofensivos são filtrados automaticamente
+
+> # # **Caso de Uso: Cancelar Carona (Motorista)**
+
+## **1. Nome do Caso de Uso**  
+**UC007 - Cancelar Carona por Motorista**
+
+## **2. Descrição**  
+Permite que motoristas cancelem caronas previamente agendadas, desde que realizado dentro do prazo estabelecido (até 2 horas antes do horário marcado), com notificação automática a todos os passageiros afetados.
+
+## **3. Atores**  
+- **Ator Primário:** Motorista  
+- **Atores Secundários:**  
+  - Passageiros (notificados sobre o cancelamento)  
+  - Sistema de Reembolsos (se aplicável)  
+
+## **4. Pré-condições**  
+1. O motorista está autenticado no sistema  
+2. Existe pelo menos uma carona agendada criada pelo motorista  
+3. O horário atual é pelo menos 2 horas antes do horário marcado da carona  
+
+## **5. Fluxo Básico**  
+1. O motorista acessa a seção "Minhas Caronas"  
+2. Seleciona a carona que deseja cancelar  
+3. O sistema exibe o botão "Cancelar Carona"  
+4. O motorista clica no botão e confirma a ação  
+5. O sistema:  
+   - Remove a carona do sistema  
+   - Envia notificação automática a todos os passageiros  
+   - Inicia processo de reembolso (se pagamento foi realizado)  
+6. O motorista recebe confirmação do cancelamento  
+
+## **6. Fluxos Alternativos**  
+
+### **Alternativa 1: Cancelamento com Reembolso**  
+1. Se passageiros já pagaram:  
+   - Sistema processa reembolso automático  
+   - Envia e-mail com comprovante de reembolso  
+
+### **Alternativa 2: Sugerir Nova Carona**  
+1. O sistema pode sugerir:  
+   - "Deseja reagendar esta carona?"  
+   - Se sim, redireciona para tela de edição  
+
+## **7. Fluxos de Exceção**  
+
+### **Exceção 1: Tentativa de Cancelamento Tardio**  
+1. Se motorista tentar cancelar com menos de 2 horas:  
+   - Sistema exibe:  
+   *"Cancelamento não permitido. Contate os passageiros diretamente."*  
+
+### **Exceção 2: Falha na Notificação**  
+1. Se algum passageiro não receber notificação:  
+   - Sistema mantém registro e reenvia a cada 15 minutos  
+   - Exibe para motorista:  
+   *"Alguns passageiros ainda não foram notificados"*  
+
+## **8. Pós-condições**  
+1. A carona é removida do sistema  
+2. Todos os passageiros são notificados  
+3. Status é atualizado no histórico do motorista  
+4. Reembolsos são processados quando aplicável  
+
+## **9. Requisitos Relacionados**  
+- **RF007:** Cancelamento por motorista  
+- **RF002:** Processo de reembolso  
+- **RNF003:** Notificações em tempo real  
+
+## **10. Interface de Usuário**  
+
+### **Tela de Cancelamento:**  
+```
+[Título: "Cancelar Carona para [Destino]?"]  
+[Mensagem: "Esta ação notificará todos os passageiros"]  
+[Botão "Confirmar Cancelamento" (vermelho)]  
+[Botão "Voltar" (cinza)]  
+```
+
+### **Notificação para Passageiros:**  
+```
+"ATENÇÃO: Carona para [Destino] foi cancelada"  
+"Motivo: [Opções pré-definidas]"  
+"Valor será reembolsado em até 5 dias úteis" (se aplicável)  
+```
+
+**Regras de Negócio:**  
+1. Janela de cancelamento: até 2 horas antes da carona  
+2. Limite de cancelamentos: máximo 3 por mês para evitar abusos  
+3. Passageiros frequentes em caronas canceladas recebem créditos de compensação  
+
+Este caso de uso garante um processo justo e transparente para cancelamentos, protegendo tanto motoristas quanto passageiros.
+
+> # # **Caso de Uso: Criar Oferta de Carona**
+
+## **1. Nome do Caso de Uso**  
+**UC008 - Criar Oferta de Carona**
+
+## **2. Descrição**  
+Permite que motoristas cadastrados criem ofertas de caronas compartilhadas, informando trajeto, horários e número de vagas disponíveis para outros universitários.
+
+## **3. Atores**  
+- **Ator Primário:** Motorista (verificado)  
+- **Ator Secundário:** Sistema de Georreferenciamento  
+
+## **4. Pré-condições**  
+1. Usuário autenticado possui perfil de motorista verificado  
+2. Possui veículo cadastrado no sistema (opcional)  
+3. Conexão com internet ativa  
+
+## **5. Fluxo Básico**  
+1. Motorista acessa a opção "Oferecer Carona"  
+2. Sistema exibe formulário com campos:
+   - Local de partida (com autocompletar)  
+   - Destino (com autocompletar)  
+   - Data e horário de saída  
+   - Número de vagas disponíveis (1-4)  
+   - Valor sugerido por passageiro (opcional)  
+   - Observações (ex: "Levo mochila pequena")  
+3. Motorista preenche os campos obrigatórios  
+4. Sistema valida os dados e exibe pré-visualização  
+5. Motorista confirma a publicação  
+6. Sistema:
+   - Disponibiliza a carona para busca  
+   - Atualiza o status para "Disponível"  
+
+## **6. Fluxos Alternativos**  
+
+### **Alternativa 1: Carona Recorrente**  
+1. No passo 2, motorista seleciona "Viagem recorrente"  
+2. Sistema adiciona campos:
+   - Dias da semana (ex: seg/qua/sex)  
+   - Período de vigência (data final)  
+
+### **Alternativa 2: Usar Localização Atual**  
+1. Motorista clica em "Usar minha localização atual"  
+2. Sistema preenche automaticamente o local de partida  
+
+## **7. Fluxos de Exceção**  
+
+### **Exceção 1: Perfil Não Verificado**  
+1. Se usuário tentar criar oferta sem ser motorista:
+   - Sistema exibe:  
+   *"Complete sua verificação como motorista primeiro"*  
+   - Redireciona para tela de cadastro de motorista  
+
+### **Exceção 2: Horário Inválido**  
+1. Se selecionar horário passado:
+   - Sistema alerta:  
+   *"Selecione um horário futuro"*  
+   - Bloqueia a publicação  
+
+## **8. Pós-condições**  
+1. Nova carona aparece nos resultados de busca  
+2. Motorista recebe notificação quando há solicitações  
+3. Carona é arquivada automaticamente após o horário  
+
+## **9. Requisitos Relacionados**  
+- **RF008:** Criação de ofertas por motoristas  
+- **RF001:** Integração com busca de caronas  
+- **RNF004:** Validação de localização  
+
+## **10. Interface de Usuário**  
+
+### **Formulário de Criação:**  
+```
+[Mapa interativo com arrastar/soltar para ajustar pontos]  
+[Seletor de data/horário (datetime picker)]  
+[Slider para número de vagas (1-4)]  
+[Campo "Valor sugerido" com máscara monetária]  
+[Área "Observações" (textarea)]  
+[Botão "Visualizar Antes de Publicar"]  
+```
+
+### **Pré-visualização:**  
+```
+"Você está oferecendo:  
+De [Origem] para [Destino]  
+Dia [data] às [hora]  
+[Vagas] vaga(s) disponível(eis)"  
+[Botão "Publicar Agora"]  
+```
+
+**Regras de Negócio:**  
+1. Limite de caronas ativas: 5 por motorista  
+2. Período mínimo para publicação: 1 hora antes do horário  
+3. Caronas com mesmo trajeto são agrupadas automaticamente  
+
+Este caso de uso otimiza a criação de caronas com ferramentas intuitivas, garantindo que apenas motoristas verificados possam oferecer viagens seguras para a comunidade universitária.
