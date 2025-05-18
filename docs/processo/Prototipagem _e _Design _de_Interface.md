@@ -7,7 +7,7 @@
 https://www.figma.com/design/BfTWiGhv8kDfsVojtG81FY/Untitled?node-id=0-1&t=45JHDMB0FHc3uIrW-1
 
 > ### Aplicação de Princípios de Design Centrado no Usuário
-______________
+> Luis está fazendo
 
 > ### Considerações de Acessibilidade
 > [Acessibilidade.pdf](https://github.com/user-attachments/files/20269970/Acessibilidade.pdf)
