@@ -503,7 +503,7 @@ Prototipagem e Design de Interface
 5. (17/05/25)Elaboração de Guia de Estilo Básico
 6. (Data da entrega)Consuduçaõ de testes de usabilidade simplificadas
 7. (Data da entrega)Refinamento dos protótipos
-8. (Data da entrega)Eleboração de Guia de estilo básico
+8. (17/05/25)Eleboração de Guia de estilo básico
 9. Atualizações da documentação no repositório github
 
    
