@@ -511,7 +511,7 @@ Prototipagem e Design de Interface
 - [ Luis Gustavo Quirino]: [Baixa fidelidade desenhada]
 - [ Luis Gustavo Quirino]: [Design centrado no Usuário]
 - [ Kaio Junior]: [Media fidelidade no Figma]
-- [Mateus Tucunduva]: [Elaboração de Guia de Estilo Básico]
+- [Juliana M.]: [Elaboração de Guia de Estilo Básico]
 - [ Juliana M.]: [atualização no figma conforme a atividade de acessibilidade]
 - [ Juliana M.]: [Atualizar o GitHub]
 
@@ -519,7 +519,9 @@ Prototipagem e Design de Interface
 
 - [Figma de baixa funcionalidade ] - [Protótipos de baixa fidelidade.pdf](https://github.com/user-attachments/files/20270002/Prototipos.de.baixa.fidelidade.pdf)
 - [Figma de media funcionalidade, atualizado] - [(https://www.figma.com/design/BfTWiGhv8kDfsVojtG81FY/Untitled?node-id=0-1&t=XuelPU8Ob2Cc5RdD-1)]
--  (17/05/25)[Acessibilidade.pdf](https://github.com/user-attachments/files/20270005/Acessibilidade.pdf) - [Implementado acesseiblidade no prototipo no figma.Cores mudadas, iconis de acessibilidade implemendato.Ducumento entrega no moodle] 
+- (18/05/25)[Design centrado no Usuário] - [Prototipagem e Design de Interface ADS turma 1B.pdf.PDF](https://github.com/user-attachments/files/20357393/Prototipagem.e.Design.de.Interface.ADS.turma.1B.pdf.PDF)
+- ( ) [Condução de Testes de Usabilidade Simplificados]
+- (17/05/25)[Acessibilidade.pdf](https://github.com/user-attachments/files/20270005/Acessibilidade.pdf) - [Implementado acesseiblidade no prototipo no figma.Cores mudadas, iconis de acessibilidade implemendato.Ducumento entrega no moodle] 
 - [Elaboração de Guia de Estilo Básico_1 (1).pdf](https://github.com/user-attachments/files/20269996/Elaboracao.de.Guia.de.Estilo.Basico_1.1.pdf)- [enviado um documento com os tamanhos das fontos usada, cores usadas, icones e elementos grafico]
 - 
 
@@ -527,9 +529,11 @@ Prototipagem e Design de Interface
 
 
 - [Luis Gustavo Quirino]: [Figma de baixa funcionalidade]
+- [Luis Gustavo Quirino]: [Design centrado no Usuário]
+- [Luis Gustavo Quirino]: [Condução de Testes de Usabilidade Simplificados]
 - [Kaio Junior]: [Figma de media funcionalidade]
 - [Juliana M.]: [Considerações de Acessibilidade, Atualizar o GitHub]
-- [Mateus Tucunduva]: [Elaboração de Guia de Estilo Básico]
+- [Juliana M.]: [Elaboração de Guia de Estilo Básico]
 
 ### Dificuldades e Soluções
 
@@ -538,6 +542,7 @@ Prototipagem e Design de Interface
 - [Encontrar um jeito de que todas as cores fiquem boa para um bom contraste]
 - [Fazer um prototipo, de um jeito legal]
 - [Como fazzeriamos para colocar iconis e imagens que ficasem de uma boa maneira]
+- 
 
 **Soluções adotadas:**
 
