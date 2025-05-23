@@ -7,7 +7,8 @@
 https://www.figma.com/design/BfTWiGhv8kDfsVojtG81FY/Untitled?node-id=0-1&t=45JHDMB0FHc3uIrW-1
 
 > ### Aplicação de Princípios de Design Centrado no Usuário
-> Luis está fazendo
+> [Prototipagem e Design de Interface ADS turma 1B.pdf (1).PDF](https://github.com/user-attachments/files/20419014/Prototipagem.e.Design.de.Interface.ADS.turma.1B.pdf.1.PDF)
+
 
 > ### Considerações de Acessibilidade
 > [Acessibilidade.pdf](https://github.com/user-attachments/files/20269970/Acessibilidade.pdf)
