@@ -2,6 +2,8 @@
 jnihbuiygbuiyb
 > ### Criação de Wireframes de Baixa Fidelidade
 > [Protótipos de baixa fidelidade (1).pdf](https://github.com/user-attachments/files/20269962/Prototipos.de.baixa.fidelidade.1.pdf)
+> ![image](https://github.com/user-attachments/assets/a43ad81c-26dc-448c-8d3a-0bd95a06c4b5)
+> ![image](https://github.com/user-attachments/assets/ced2d32f-2ac5-496f-9eec-6cf7030037f3)
 
 > ### Desenvolvimento de Protótipos de Média Fidelidade
 https://www.figma.com/design/BfTWiGhv8kDfsVojtG81FY/Untitled?node-id=0-1&t=45JHDMB0FHc3uIrW-1
@@ -12,6 +14,10 @@ https://www.figma.com/design/BfTWiGhv8kDfsVojtG81FY/Untitled?node-id=0-1&t=45JHD
 
 > ### Considerações de Acessibilidade
 > [Acessibilidade.pdf](https://github.com/user-attachments/files/20269970/Acessibilidade.pdf)
+>![image](https://github.com/user-attachments/assets/6a7fb12b-604b-47e0-814b-af2eef1fab51)
+![image](https://github.com/user-attachments/assets/bb5df134-5653-4529-b73a-f17d4d67462b)
+![image](https://github.com/user-attachments/assets/ffacc491-5301-4f97-a836-ede09ec1d98e)
+> 
 
 > ### Condução de Testes de Usabilidade Simplificados
 
