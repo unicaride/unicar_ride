@@ -4,7 +4,10 @@
 > ![image](https://github.com/user-attachments/assets/ced2d32f-2ac5-496f-9eec-6cf7030037f3)
 
 > ## Desenvolvimento de Protótipos de Média Fidelidade
-https://www.figma.com/design/BfTWiGhv8kDfsVojtG81FY/Untitled?node-id=0-1&t=45JHDMB0FHc3uIrW-1
+![Captura de tela 2025-05-23 221132](https://github.com/user-attachments/assets/c91e09ca-6d49-444b-8a65-f83ff182dba5)
+![Captura de tela 2025-05-23 221124](https://github.com/user-attachments/assets/4baf5591-f11e-43ce-ab49-4d7cecca4d6f)
+![Captura de tela 2025-05-23 221116](https://github.com/user-attachments/assets/f0a9da1d-6462-4370-97ee-bbdd8146f385)
+![Captura de tela 2025-05-23 221142](https://github.com/user-attachments/assets/d2f45466-bec8-46ad-a6b4-a96bcd48e060)
 
 > ## Aplicação de Princípios de Design Centrado no Usuário
 > [Prototipagem e Design de Interface ADS turma 1B.pdf (1).PDF](https://github.com/user-attachments/files/20419014/Prototipagem.e.Design.de.Interface.ADS.turma.1B.pdf.1.PDF)
