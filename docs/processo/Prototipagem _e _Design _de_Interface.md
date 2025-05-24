@@ -1,5 +1,3 @@
- # Prototipagem e Design de Interface
-
 > ## Criação de Wireframes de Baixa Fidelidade
 > (https://github.com/user-attachments/files/20269962/Prototipos.de.baixa.fidelidade.1.pdf)
 > ![image](https://github.com/user-attachments/assets/a43ad81c-26dc-448c-8d3a-0bd95a06c4b5)
@@ -91,4 +89,44 @@ corrida
  ______________
 
 > ### Elaboração de Guia de Estilo Básico
-> [Elaboração de Guia de Estilo Básico_1 (1).pdf](https://github.com/user-attachments/files/20269972/Elaboracao.de.Guia.de.Estilo.Basico_1.1.pdf)
+
+![Captura de tela 2025-05-23 220109](https://github.com/user-attachments/assets/e200bfe6-5cf7-41c7-8587-380e5c47bbee)
+
+![Captura de tela 2025-05-23 220423](https://github.com/user-attachments/assets/2cab086f-613e-4772-86a5-36e5dccc3943)
+
+![Captura de tela 2025-05-23 220416](https://github.com/user-attachments/assets/490c71f0-151f-44a0-8fb2-122c48e71dae)
+
+![Captura de tela 2025-05-23 220402](https://github.com/user-attachments/assets/334898bd-d47e-4b96-b1c6-4e7bba13a95d)
+
+![Captura de tela 2025-05-23 220351](https://github.com/user-attachments/assets/af3c5c55-da02-4e5f-b093-bff5375d797d)
+
+![Captura de tela 2025-05-23 220339](https://github.com/user-attachments/assets/d23dfb45-072a-451b-bfb0-a0588e9a3e65)
+
+![Captura de tela 2025-05-23 220331](https://github.com/user-attachments/assets/d1af2159-40d8-4c51-a769-4aec284dcbd3)
+
+![Captura de tela 2025-05-23 220320](https://github.com/user-attachments/assets/916b59b5-9bea-48b3-b01f-3ada9c6f491e)
+
+![Captura de tela 2025-05-23 220309](https://github.com/user-attachments/assets/18b9f181-2b15-4284-b0df-462736438a6c)
+
+![Captura de tela 2025-05-23 220236](https://github.com/user-attachments/assets/cbad5fa9-c87f-4419-9a0e-a88e1a218baa)
+
+![Captura de tela 2025-05-23 220227](https://github.com/user-attachments/assets/bafa030c-6620-46ca-9b14-7edafc24aa28)
+
+![Captura de tela 2025-05-23 220218](https://github.com/user-attachments/assets/3142f5dc-a1b5-4e4d-8f8b-2ccdf753c570)
+
+![Captura de tela 2025-05-23 220207](https://github.com/user-attachments/assets/59a3b316-a020-4bcf-8975-d3ebc5ce55e8)
+
+![Captura de tela 2025-05-23 220158](https://github.com/user-attachments/assets/67bdc781-1b66-4bb2-990c-7ef6a385a653)
+
+![Captura de tela 2025-05-23 220145](https://github.com/user-attachments/assets/3fb4d118-cf22-498c-92a5-7658cf130a30)
+
+![Captura de tela 2025-05-23 220131](https://github.com/user-attachments/assets/fc58a1bf-b31d-4cb2-baf1-1ebb7736df8d)
+
+![Captura de tela 2025-05-23 220430](https://github.com/user-attachments/assets/0046ed4e-6938-4762-ab01-51bf59189484)
+
+
+
+
+
+
+
