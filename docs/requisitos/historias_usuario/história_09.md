@@ -5,8 +5,8 @@ perfil de passageiro ou motorista
 ## Narrativa
 
 **Como** passageiro
-**Eu quero** poder acessar o perfil de passageiro ou motorista de acordo com minha necessidade.
-**Para que**
+**eu quero** poder acessar o perfil de passageiro ou motorista de acordo com minha necessidade.
+**para que**
 
 ## Critérios de Aceitação
 
