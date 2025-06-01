@@ -6,7 +6,7 @@ Oferta de carona
 ## Narrativa
 
 **Como** motorista
-**Eu quero** criar uma oferta de carona para disponibilizar meu trajeto com outros universitantes.
+**eu quero** criar uma oferta de carona para disponibilizar meu trajeto com outros universitantes.
 **Para que**
 
 ## Critérios de Aceitação
