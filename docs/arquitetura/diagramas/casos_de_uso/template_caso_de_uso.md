@@ -1,325 +1,476 @@
-# Caso de Uso: [ID]
+# Caso de Uso: UC001 
 
-Caso de Uso: Buscar Caronas Disponíveis
-1. Nome do Caso de Uso
-UC001 – Buscar Caronas Disponíveis
+## Nome
 
-2. Descrição
+Buscar Caronas Disponíveis
+
+## Descrição
+
 Este caso de uso permite que um passageiro busque caronas disponíveis com base em local de partida e destino, visualizando informações como nome do motorista, horário e vagas disponíveis.
 
-3. Atores
-Ator Primário: Passageiro
+## Atores
 
-Atores Secundários: Motorista (fornece as caronas disponíveis)
+-Ator Primário: Passageiro
+-Atores Secundários: Motorista (fornece as caronas disponíveis)
 
-4. Pré-condições
-O usuário está autenticado no sistema.
+## Pré-condições
 
-Existem caronas cadastradas no sistema.
+1. O usuário está autenticado no sistema.
+2. Existem caronas cadastradas no sistema.
 
-5. Fluxo Básico
-O passageiro acessa a tela principal e seleciona "Buscar Caronas".
+## Fluxo Básico
 
-O sistema exibe um formulário com os campos:
+1. O passageiro acessa a tela principal e seleciona "Buscar Caronas".
+* O sistema exibe um formulário com os campos:
+  Local de Partida (obrigatório)
 
-Local de Partida (obrigatório)
+  Destino (obrigatório)
 
-Destino (obrigatório)
+2. O passageiro preenche os campos e clica em "Buscar".
+* O sistema retorna uma lista de caronas disponíveis, contendo:
 
-O passageiro preenche os campos e clica em "Buscar".
+  Nome do motorista
+  
+  Horário da carona
+  
+  Vagas disponíveis
 
-O sistema retorna uma lista de caronas disponíveis, contendo:
+3. O passageiro seleciona uma carona e clica em "Solicitar Vaga".
+4. O sistema registra a solicitação e notifica o motorista.
 
-Nome do motorista
 
-Horário da carona
+## Fluxos Alternativos
 
-Vagas disponíveis
+### Alternativa 1
+1. Filtros Adicionais
+   
+ 1. No passo 2, o passageiro pode aplicar filtros adicionais (ex.: data, horário).
 
-O passageiro seleciona uma carona e clica em "Solicitar Vaga".
+ 2. O sistema atualiza a lista de caronas conforme os filtros selecionados.
 
-O sistema registra a solicitação e notifica o motorista.
+### Alternativa 2
 
-6. Fluxos Alternativos
-Alternativa 1: Filtros Adicionais
-No passo 2, o passageiro pode aplicar filtros adicionais (ex.: data, horário).
+2. Nenhuma Carona Encontrada
+   
+ 1. No passo 4, se não houver caronas disponíveis, o sistema exibe:
 
-O sistema atualiza a lista de caronas conforme os filtros selecionados.
+ 2. "Nenhuma carona encontrada para o trajeto selecionado."
 
-Alternativa 2: Nenhuma Carona Encontrada
-No passo 4, se não houver caronas disponíveis, o sistema exibe:
+ 3. O passageiro pode ajustar os critérios de busca e tentar novamente.
+   
+## Fluxos de Exceção
 
-"Nenhuma carona encontrada para o trajeto selecionado."
+### Exceção 1
 
-O passageiro pode ajustar os critérios de busca e tentar novamente.
-
-7. Fluxos de Exceção
-Exceção 1: Campos Obrigatórios Não Preenchidos
+1. Campos Obrigatórios Não Preenchidos
 No passo 3, se o passageiro não preencher os campos obrigatórios, o sistema exibe:
 
-"Preencha o local de partida e destino para buscar caronas."
+ "Preencha o local de partida e destino para buscar caronas."
 
 O sistema impede a busca até que os campos sejam preenchidos.
 
-Exceção 2: Falha na Conexão
+### Exceção 2
+
+2. Falha na Conexão
 No passo 4, se houver falha na conexão, o sistema exibe:
 
-"Não foi possível buscar caronas. Verifique sua conexão e tente novamente."
+ "Não foi possível buscar caronas. Verifique sua conexão e tente novamente."
 
-8. Pós-condições
-O passageiro visualiza a lista de caronas disponíveis.
+## Pós-condições
 
-Se uma solicitação for enviada, o motorista é notificado.
+1. O passageiro visualiza a lista de caronas disponíveis.
+2. Se uma solicitação for enviada, o motorista é notificado.
 
-9. Requisitos Relacionados
-RF001: Buscar caronas por local de partida e destino.
 
-RF008: Motorista pode criar ofertas de carona.
+## Requisitos Relacionados
 
-RNF002: Segurança na autenticação do usuário.
+- RF001: Buscar caronas por local de partida e destino.
+- RF008: Motorista pode criar ofertas de carona.
+- RNF002: Segurança na autenticação do usuário.
 
-10. Interface de Usuário
-Tela de Busca:
+## Interface de Usuário
 
+#### Tela de Busca:
 Campos de texto para Local de Partida e Destino.
 
 Botão "Buscar".
 
-Lista de resultados com:
-
+#### Lista de resultados com:
 Foto e nome do motorista.
 
+## Diagrama
 
+```mermaid
+flowchart TD
+    A([Início]) --> B[Tela Principal]
+    B --> C[Passageiro seleciona Buscar Caronas]
+    C --> D{Pré-condições satisfeitas?}
+    
+    %% Fluxo Básico
+    D -->|Sim| E[Exibe formulário]
+    E --> F[Preenche campos*]
+    F --> G{Validar campos}
+    G -->|Válidos| H[Busca caronas]
+    H --> I{Encontrou resultados?}
+    I -->|Sim| J[Exibe lista]
+    J --> K[Clica Solicitar Vaga]
+    K --> L[Notifica motorista]
+    L --> M([Fim])
 
-> # Caso de Uso: Pagamento Integrado (PIX/Cartão)
->
-1. Nome do Caso de Uso
-UC002 – Realizar Pagamento da Carona
+    %% Fluxos Alternativos
+    I -->|Não| N[Mostra mensagem]
+    N --> O[Modificar busca?]
+    O -->|Sim| E
+    O -->|Não| B
 
-2. Descrição
+    F -->|Filtros| P[Aplica filtros]
+    P --> H
+
+    %% Fluxos de Exceção
+    D -->|Não| Q[Sem caronas]
+    Q --> B
+    G -->|Inválidos| R[Erro campos]
+    R --> E
+    H -->|Falha| S[Erro conexão]
+    S --> F
+
+    %% Estilos
+    style A fill:#2ecc71,stroke:#27ae60
+    style M fill:#2ecc71,stroke:#27ae60
+    style Q fill:#e74c3c,stroke:#c0392b
+    style N fill:#f39c12,stroke:#d35400
+    style R fill:#e74c3c,stroke:#c0392b
+    style S fill:#e74c3c,stroke:#c0392b
+    style L fill:#3498db,stroke:#2980b9
+```
+# Caso de Uso: UC002 
+
+## Nome
+
+ Realizar Pagamento da Carona
+
+## Descrição
+
 Permite que o passageiro realize o pagamento de uma carona solicitada e aceita, utilizando PIX ou cartão de crédito/débito, gerando um comprovante digital.
 
-3. Atores
-Ator Primário: Passageiro
+## Atores
 
-Atores Secundários:
+- Ator Primário: Passageiro
+- Atores Secundários:
+ Motorista (recebe confirmação do pagamento)
+ Sistema de Pagamento (processa a transação)
 
-Motorista (recebe confirmação do pagamento)
+## Pré-condições
 
-Sistema de Pagamento (processa a transação)
+1. O passageiro está autenticado no sistema.
+2. O motorista aceitou a solicitação de carona.
+3. O passageiro ainda não realizou o pagamento.
 
-4. Pré-condições
-O passageiro está autenticado no sistema.
+## Fluxo Básico
 
-O motorista aceitou a solicitação de carona.
+1. O sistema exibe a opção "Pagar Carona" na tela de caronas confirmadas.
+2. O passageiro seleciona o método de pagamento (PIX ou Cartão).
+- Para PIX:
 
-O passageiro ainda não realizou o pagamento.
+   O sistema gera um QR Code ou código copia-e-cola.
 
-5. Fluxo Básico
-O sistema exibe a opção "Pagar Carona" na tela de caronas confirmadas.
+   O passageiro realiza o pagamento via app bancário.
 
-O passageiro seleciona o método de pagamento (PIX ou Cartão).
+- Para Cartão:
 
-Para PIX:
+  O sistema redireciona para tela de inserção de dados do cartão.
 
-O sistema gera um QR Code ou código copia-e-cola.
+  O passageiro preenche os dados e confirma o pagamento.
 
-O passageiro realiza o pagamento via app bancário.
+3. O sistema processa o pagamento e:
 
-Para Cartão:
+  Envia confirmação ao motorista.
 
-O sistema redireciona para tela de inserção de dados do cartão.
+  Gera e envia recibo digital por e-mail ao passageiro.
 
-O passageiro preenche os dados e confirma o pagamento.
+  A vaga na carona é oficialmente reservada.
 
-O sistema processa o pagamento e:
 
-Envia confirmação ao motorista.
 
-Gera e envia recibo digital por e-mail ao passageiro.
+## Fluxos Alternativos
 
-A vaga na carona é oficialmente reservada.
+### Alternativa 1
 
-6. Fluxos Alternativos
-Alternativa 1: Pagamento com Cartão Salvo
-No passo 2, se o passageiro tiver cartão cadastrado:
+1. Pagamento com Cartão Salvo
+   
+ - No passo 2, se o passageiro tiver cartão cadastrado:
 
-O sistema mostra opção "Usar Cartão Salvo".
+    O sistema mostra opção "Usar Cartão Salvo".
 
-O pagamento é processado automaticamente após confirmação.
+    O pagamento é processado automaticamente após confirmação.
 
-Alternativa 2: Pagamento Pendente (PIX não concluído)
-Se o passageiro não finalizar o PIX em 30 minutos:
+### Alternativa 2
+1. Pagamento Pendente (PIX não concluído)
+ - Se o passageiro não finalizar o PIX em 30 minutos:
+2. O sistema cancela a reserva automaticamente.
+3. Notifica o passageiro: "Pagamento não concluído. Tente novamente."
 
-O sistema cancela a reserva automaticamente.
 
-Notifica o passageiro: "Pagamento não concluído. Tente novamente."
+## Fluxos de Exceção
 
-7. Fluxos de Exceção
-Exceção 1: Pagamento Recusado
-Se o pagamento for recusado (cartão negado/PIX falho):
+### Exceção 1: Pagamento Recusado
 
-O sistema exibe: "Pagamento não aprovado. Tente outro método."
+1. Se o pagamento for recusado (cartão negado/PIX falho):
+2. O sistema exibe: "Pagamento não aprovado. Tente outro método."
+3. Permite nova tentativa ou alteração de método.
 
-Permite nova tentativa ou alteração de método.
+### Exceção 2: Falha no Processamento
 
-Exceção 2: Falha no Processamento
-Se houver erro no sistema durante o pagamento:
+1. Se houver erro no sistema durante o pagamento:
+2. O sistema registra a falha e exibe: "Erro ao processar. Tente mais tarde."
+3. A carona permanece como "pendente de pagamento".
 
-O sistema registra a falha e exibe: "Erro ao processar. Tente mais tarde."
+## Pós-condições
 
-A carona permanece como "pendente de pagamento".
+1. O motorista recebe confirmação da reserva paga.
+2. O passageiro recebe recibo por e-mail.
+3. A vaga é marcada como ocupada na carona.
 
-8. Pós-condições
-O motorista recebe confirmação da reserva paga.
+## Requisitos Relacionados
 
-O passageiro recebe recibo por e-mail.
+- RF002: Pagamento via PIX ou cartão.
+- RNF002: Segurança nas transações (dados criptografados).
+- RF005: Motorista só confirma após pagamento.
 
-A vaga é marcada como ocupada na carona.
+## Interface de Usuário
 
-9. Requisitos Relacionados
-RF002: Pagamento via PIX ou cartão.
+#### Tela de Pagamento:
 
-RNF002: Segurança nas transações (dados criptografados).
+- Seletor de método (PIX/Cartão).
+- QR Code ou campo para dados do cartão.
+- Botão "Confirmar Pagamento".
+- Mensagem de status (ex.: "Aguardando confirmação PIX").
 
-RF005: Motorista só confirma após pagamento.
+#### E-mail de Recibo:
 
-10. Interface de Usuário
-Tela de Pagamento:
+- Detalhes da carona (motorista, horário, valor).
+- Código da transação.
+- Horário e vagas disponíveis.
+- Botão "Solicitar Vaga".
 
-Seletor de método (PIX/Cartão).
+## Diagrama
 
-QR Code ou campo para dados do cartão.
+```mermaid
+flowchart TD
+    A([Início]) --> B[Tela de Caronas Confirmadas]
+    B --> C[Clique em Pagar Carona]
+    C --> D{Seleciona método}
+    
+    %% Fluxo Principal
+    D -->|PIX| E[Exibe QR Code/Código PIX]
+    E --> F[Pagamento via app bancário]
+    D -->|Cartão| G[Tela de dados do cartão]
+    G --> H[Preenche e confirma]
+    
+    %% Processamento
+    F & H --> I{Processa pagamento}
+    I -->|Sucesso| J[Atualiza status]
+    J --> K[Envia recibo por email]
+    K --> L[Notifica motorista]
+    L --> M([Reserva confirmada])
 
-Botão "Confirmar Pagamento".
+    %% Fluxos Alternativos
+    D -->|Cartão Salvo| N[Usa cartão cadastrado]
+    N --> I
+    E -->|PIX não concluído| O[30min timeout]
+    O --> P[Cancela reserva]
+    P --> Q[Notifica passageiro]
+    Q --> B
 
-Mensagem de status (ex.: "Aguardando confirmação PIX").
+    %% Fluxos de Exceção
+    I -->|Recusado| R[Exibe erro]
+    R -->|Novo método| D
+    I -->|Falha sistema| S[Registra erro]
+    S --> T[Exibe mensagem]
+    T --> B
 
-E-mail de Recibo:
+    %% Estilos
+    style A fill:#2ecc71,stroke:#27ae60
+    style M fill:#2ecc71,stroke:#27ae60
+    style R fill:#e74c3c,stroke:#c0392b
+    style S fill:#e74c3c,stroke:#c0392b
+    style O fill:#f39c12,stroke:#d35400
+    style L fill:#3498db,stroke:#2980b9
+```
 
-Detalhes da carona (motorista, horário, valor).
+# Caso de Uso: UC003
 
-Código da transação.
+## Nome
 
-Horário e vagas disponíveis.
+Gerenciar Perfil do Usuário
 
-Botão "Solicitar Vaga".
+## Descrição
 
-> # Caso de Uso: Gerenciar Perfil do Usuário
->> 
-1. Nome do Caso de Uso
-UC003 – Gerenciar Perfil do Usuário
-
-2. Descrição
 Permite que o usuário (passageiro ou motorista) visualize, edite e mantenha seu perfil atualizado com informações pessoais, foto e histórico de caronas, garantindo transparência e confiabilidade no sistema.
 
-3. Atores
-Ator Primário: Usuário (Passageiro ou Motorista)
+## Atores
+ 
+- Ator Primário: Usuário (Passageiro ou Motorista)
+- Atores Secundários:
 
-Atores Secundários:
+   Outros usuários (visualizam o perfil)
 
-Outros usuários (visualizam o perfil)
+   Sistema de Avaliações (atualiza as médias)
 
-Sistema de Avaliações (atualiza as médias)
+## Pré-condições
+
+1. O usuário está autenticado no sistema.
+2. O perfil do usuário foi criado durante o cadastro.
+
+## Fluxo Básico
+
+1. O usuário acessa a seção "Meu Perfil" no menu principal.
+- O sistema exibe as seguintes informações:
+
+  - Nome completo
+  - Foto (se cadastrada)
+  - Curso/faculdade (opcional)
+  - Média de avaliações (1-5 estrelas)
+  - Histórico de caronas (como passageiro/motorista)
+
+- Para editar:
+
+  - O usuário clica em "Editar Perfil".
+
+2. sistema permite modificar:
+
+   - Foto (upload ou remoção)
+   - Curso/faculdade
+
+3. Outras informações pessoais (exceto avaliações)
+4. O usuário confirma as alterações clicando em "Salvar".
+5. O sistema atualiza o perfil e exibe mensagem: "Alterações salvas com sucesso!".
+
+## Fluxos Alternativos
+
+### Alternativa 1: Visualizar Perfil de Outro Usuário
+
+1. O usuário clica no nome/perfil de outro participante (em uma carona ou chat).
+- O sistema exibe:
+
+ - Informações públicas (nome, foto, avaliações médias).
+ - Botão "Enviar Mensagem" (se aplicável).
+ - Não é possível editar o perfil de outros usuários.
+
+### Alternativa 2: Usuário Não Possui Foto
+
+1. Se o usuário não tiver foto cadastrada:
+
+   - O sistema exibe um ícone padrão (silhueta).
+   - Mostra a opção "Adicionar Foto" destacada.
+
+## Fluxos de Exceção
+
+### Exceção 1: Falha ao Salvar Alterações
+
+1. Se houver erro de conexão ao salvar:
+
+   - O sistema exibe: "Não foi possível atualizar. Verifique sua conexão."
+
+- Mantém os dados anteriores.
+
+###Exceção 2: Tentativa de Editar Avaliações
+
+1. Se o usuário tentar modificar avaliações recebidas (via inspeção HTML/console):
+    - O sistema bloqueia a ação e exibe: "Avaliações não podem ser alteradas."
+
+## Pós-condições
+
+1. As informações editadas são atualizadas no perfil.
+2. Outros usuários visualizam as mudanças em interações futuras.
+3. A média de avaliações permanece imutável pelo usuário.
+
+## Requisitos Relacionados
+
+- RF003: Perfil com nome, foto, curso e avaliações.
+- RF006: Avaliações após caronas concluídas.
+- RNF001: Autenticação segura para acesso ao perfil.
+  
+## Interface de Usuário
+
+- Tela de Perfil Pessoal:
+
+   - Foto (ou ícone) + botão "Alterar Foto".
+   - Campos editáveis (nome, curso, etc.).
+   - Seção de avaliações (somente leitura).
+   - Botão "Salvar"/"Cancelar".
+
+- Tela de Perfil de Terceiros:
+
+   - Apenas visualização (sem opções de edição).
+   - Botão "Enviar Mensagem" (se não bloqueado).
+
+## Diagrama
+
+```mermaid
+flowchart TD
+    A([Início]) --> B[Menu Principal]
+    B --> C[Seleciona Meu Perfil]
+    C --> D{Perfil Próprio?}
+    
+    %% Fluxo Principal (Edição)
+    D -->|Sim| E[Exibe Perfil Editável]
+    E --> F[Nome, Foto, Curso, Avaliações]
+    F --> G[Clique em Editar]
+    G --> H[Modifica Campos Permitidos]
+    H --> I[Clique em Salvar]
+    I --> J{Salvou?}
+    J -->|Sucesso| K[Exibe Confirmação]
+    K --> L([Perfil Atualizado])
+
+    %% Fluxos Alternativos
+    D -->|Não| M[Exibe Perfil Somente Leitura]
+    M --> N[Botão Mensagem]
+    N --> O([Visualização])
+
+    E -->|Sem Foto| P[Exibe Ícone Padrão]
+    P --> Q[Destaca Adicionar Foto]
+    Q --> G
+
+    %% Fluxos de Exceção
+    J -->|Falha| R[Exibe Erro de Conexão]
+    R --> I
+    H -->|Tenta Editar Avaliações| S[Bloqueia Ação]
+    S --> T[Exibe Mensagem]
+    T --> G
+
+    %% Estilos
+    style A fill:#2ecc71,stroke:#27ae60
+    style L fill:#2ecc71,stroke:#27ae60
+    style O fill:#9b59b6,stroke:#8e44ad
+    style R fill:#e74c3c,stroke:#c0392b
+    style S fill:#e74c3c,stroke:#c0392b
+    style Q fill:#f39c12,stroke:#d35400
+```
+
+
+# Caso de Uso: 
+1. Nome do Caso de Uso
 
 4. Pré-condições
-O usuário está autenticado no sistema.
 
-O perfil do usuário foi criado durante o cadastro.
 
 5. Fluxo Básico
-O usuário acessa a seção "Meu Perfil" no menu principal.
-
-O sistema exibe as seguintes informações:
-
-Nome completo
-
-Foto (se cadastrada)
-
-Curso/faculdade (opcional)
-
-Média de avaliações (1-5 estrelas)
-
-Histórico de caronas (como passageiro/motorista)
-
-Para editar:
-
-O usuário clica em "Editar Perfil".
-
-O sistema permite modificar:
-
-Foto (upload ou remoção)
-
-Curso/faculdade
-
-Outras informações pessoais (exceto avaliações)
-
-O usuário confirma as alterações clicando em "Salvar".
-
-O sistema atualiza o perfil e exibe mensagem: "Alterações salvas com sucesso!".
 
 6. Fluxos Alternativos
-Alternativa 1: Visualizar Perfil de Outro Usuário
-O usuário clica no nome/perfil de outro participante (em uma carona ou chat).
 
-O sistema exibe:
 
-Informações públicas (nome, foto, avaliações médias).
-
-Botão "Enviar Mensagem" (se aplicável).
-
-Não é possível editar o perfil de outros usuários.
-
-Alternativa 2: Usuário Não Possui Foto
-Se o usuário não tiver foto cadastrada:
-
-O sistema exibe um ícone padrão (silhueta).
-
-Mostra a opção "Adicionar Foto" destacada.
 
 7. Fluxos de Exceção
-Exceção 1: Falha ao Salvar Alterações
-Se houver erro de conexão ao salvar:
 
-O sistema exibe: "Não foi possível atualizar. Verifique sua conexão."
-
-Mantém os dados anteriores.
-
-Exceção 2: Tentativa de Editar Avaliações
-Se o usuário tentar modificar avaliações recebidas (via inspeção HTML/console):
-
-O sistema bloqueia a ação e exibe: "Avaliações não podem ser alteradas."
 
 8. Pós-condições
-As informações editadas são atualizadas no perfil.
-
-Outros usuários visualizam as mudanças em interações futuras.
-
-A média de avaliações permanece imutável pelo usuário.
 
 9. Requisitos Relacionados
-RF003: Perfil com nome, foto, curso e avaliações.
 
-RF006: Avaliações após caronas concluídas.
-
-RNF001: Autenticação segura para acesso ao perfil.
 
 10. Interface de Usuário
-Tela de Perfil Pessoal:
 
-Foto (ou ícone) + botão "Alterar Foto".
-
-Campos editáveis (nome, curso, etc.).
-
-Seção de avaliações (somente leitura).
-
-Botão "Salvar"/"Cancelar".
-
-Tela de Perfil de Terceiros:
-
-Apenas visualização (sem opções de edição).
-
-Botão "Enviar Mensagem" (se não bloqueado).
 
 >>Caso de Uso: Cadastro e Verificação de Identidade
 1. Nome do Caso de Uso
