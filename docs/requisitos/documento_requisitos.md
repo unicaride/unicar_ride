@@ -9,6 +9,8 @@
 
 ## 1. Introdução
 
+Este documento descreve os requisitos funcionais e não funcionais do unicar, um aplicativo, que visa a conexão dem otoristas, que oferecem caronas a passageiros que precisam de transporte, otimizando rotas e dividindo custos. O objetivo é proporcionar uma alternativa de transporte mais acessível, sustentável e socialmente integrada, o mesmo serve para usuarios que desejam carona
+
 ### 1.1 Propósito
 
 Arrumar o doc
