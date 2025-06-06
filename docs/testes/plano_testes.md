@@ -33,6 +33,8 @@ MVP: minimum viable product
 
 ### 2.1 Níveis de Teste
 
+Os testes, vão ser avaliados em três niveis, nivel basico, nivel médio, e nivel avançado
+
 #### 2.1.1 Testes Unitários
 
 Verificação da lógica da função, como cálculos de distancia e filtragem de caronas
@@ -72,7 +74,6 @@ Avaliar a segurança básica do sistema
 [Descrição da abordagem para testes de regressão]
 
 ## 3. Recursos
-
 
 ### 3.1 Ambientes de Teste
 
