@@ -109,7 +109,7 @@
 
 ## 13. Padrões de Design Utilizados
 
-[Descrição dos padrões de design utilizados e em quais componentes]
+[Descrição dos padrões de design utilizados e em quais componentes]dcsacdsfrsb
 
 >[!TIP]
 >Ao longo do desenvolvimento, revise este documento para garantir que a implementação esteja alinhada com a arquitetura planejada. Documente as decisões arquiteturais importantes, incluindo as alternativas consideradas e os motivos da escolha final.
