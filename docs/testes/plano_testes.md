@@ -9,19 +9,29 @@
 
 ## 1. Introdução
 
+Este documento descreve o plano de testes para o aplicativo Unicar, cujo objetivo é conectar estudantes do campus universitário interessados em oferecer ou solicitar caronas. O plano visa garantir a qualidade e o funcionamento adequado do sistema antes de sua disponibilização para uso.
+
 ### 1.1 Objetivos
 
-[Descrição dos objetivos deste plano de testes]
+Verificar se o sistema reflete corretamente a oferta e solicitação de caronas
+Validar a experiência do usuário em dispositivos móveis  
+Testar a comunicação entre usuários através do chat interno
+Avaliar a segurança básica do sistema
+
 
 ### 1.2 Escopo
 
-[Descrição do escopo de testes]
+O escopo dos testes inclui as funcionalidades principais do aplicativo, cadastro de usuários, criação de ofertas de carona, busca por caronas disponíveis, sistema de mensagens entre usuários.
+Funcionalidades como gerenciamento administrativo, métricas de uso e histórico detalhado de caronas não serão abordadas nesta fase de testes.
 
 ### 1.3 Definições, Acrônimos e Abreviações
 
-[Lista de termos, definições, acrônimos e abreviações utilizados no documento]
+Ux: user experience(experiência do usuário)
+Api: application programming interface
+MVP: minimum viable product
 
 ## 2. Estratégia de Teste
+
 
 ### 2.1 Níveis de Teste
 
@@ -65,13 +75,18 @@
 
 ## 3. Recursos
 
+
+
 ### 3.1 Ambientes de Teste
 
 [Descrição dos ambientes de teste]
 
 ### 3.2 Ferramentas
 
-[Lista de ferramentas a serem utilizadas]
+Postman
+react native
+javascript
+python
 
 ### 3.3 Equipe
 
@@ -85,11 +100,11 @@
 
 ### 5.1 Critérios de Entrada
 
-[Critérios para início das atividades de teste]
+Verificar se a funcionalidade implementada foi integrada ao sistema
 
 ### 5.2 Critérios de Saída
 
-[Critérios para conclusão das atividades de teste]
+Visualizar se os testes foram realizados com sucesso, e se nenhum bug foi relatado no momento, ou se o aplicativo esteve rodando normalmente
 
 ### 5.3 Critérios de Suspensão e Retomada
 
