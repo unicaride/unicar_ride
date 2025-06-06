@@ -1,4 +1,4 @@
-> # Diagrama de Classes do Unicar ride
+# Diagrama de Classes do Unicar ride
 
 ```mermaid
 flowchart TD
