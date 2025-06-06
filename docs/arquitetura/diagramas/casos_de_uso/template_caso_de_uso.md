@@ -448,71 +448,117 @@ flowchart TD
     style Q fill:#f39c12,stroke:#d35400
 ```
 
+# Caso de Uso: UC004 
 
-Caso de Uso: Cadastro e Verificação de Identidade
-1. Nome do Caso de Uso
-UC004 - Cadastrar Usuário e Verificar Identidade
+## Nome
 
-2. Descrição
+Cadastro e Verificação de Identidade
+
+## Descrição
+
 Permite que novos usuários (passageiros e motoristas) criem uma conta no sistema através de cadastro com e-mail e complete a verificação de identidade necessária para utilizar a plataforma.
 
-3. Atores
-Ator Primário: Novo Usuário
+## Atores
 
-Ator Secundário: Sistema de Autenticação
+- Ator Primário: Novo Usuário
+- Ator Secundário: Sistema de Autenticação
+
+## Pré-condições
+
+1. O usuário não possui conta cadastrada no sistema
+2. O dispositivo possui conexão com internet
+
+## Fluxo Básico
+
+
+1. O usuário acessa a opção "Criar Conta" na tela inicial
+2. O sistema exibe formulário de cadastro solicitando:
+
+    - Nome completo
+    - E-mail válido
+    - Senha (mínimo 8 caracteres)
+    - Confirmação de senha
+
+3. O usuário preenche todos os campos obrigatórios
+4. O sistema valida os dados e envia e-mail de verificação
+5. O usuário acessa seu e-mail e clica no link de verificação
+6. O sistema confirma a verificação e redireciona para completar perfil
+
+## Fluxos Alternativos
+
+### Alternativa 1: Cadastro como Motorista
+
+1. No passo 6, o usuário seleciona "Quero ser Motorista"
+2. O sistema solicita documentos adicionais (CNH e documento com foto)
+3. O usuário faz upload dos documentos
+4. O sistema envia para verificação manual
+5. Após aprovação (em até 48h), perfil de motorista é liberado
+
+## Fluxos de Exceção
+
+### Exceção 1: E-mail já cadastrado
+
+1. No passo 4, se e-mail já existir no sistema:
+2. Exibe mensagem: "Este e-mail já está em uso. Recuperar senha?"
+3. Oferece opções: "Tentar outro e-mail" ou "Recuperar acesso"
+
+### Exceção 2: Link de verificação expirado
+
+1. Se usuário tentar verificar após 24h:
+2. Sistema exibe: "Link expirado. Reenviar verificação?"
+3. Ao confirmar, enga novo e-mail de verificação
+
+## Pós-condições
+
+1. [Pós-condição 1]
+2. [Pós-condição 2]
+3. [Pós-condição n]
+
+## Requisitos Relacionados
+
+- [Requisito 1]
+- [Requisito 2]
+- [Requisito n]
+
+## Interface de Usuário
+
+[Descrição ou referência a protótipos/mockups]
+
+## Diagrama
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Caso de Uso: 
+3. Atores
+
 
 4. Pré-condições
-O usuário não possui conta cadastrada no sistema
-
-O dispositivo possui conexão com internet
 
 5. Fluxo Básico
-O usuário acessa a opção "Criar Conta" na tela inicial
 
-O sistema exibe formulário de cadastro solicitando:
-
-Nome completo
-
-E-mail válido
-
-Senha (mínimo 8 caracteres)
-
-Confirmação de senha
-
-O usuário preenche todos os campos obrigatórios
-
-O sistema valida os dados e envia e-mail de verificação
-
-O usuário acessa seu e-mail e clica no link de verificação
-
-O sistema confirma a verificação e redireciona para completar perfil
 
 6. Fluxos Alternativos
-Alternativa 1: Cadastro como Motorista
-No passo 6, o usuário seleciona "Quero ser Motorista"
 
-O sistema solicita documentos adicionais (CNH e documento com foto)
-
-O usuário faz upload dos documentos
-
-O sistema envia para verificação manual
-
-Após aprovação (em até 48h), perfil de motorista é liberado
 
 7. Fluxos de Exceção
-Exceção 1: E-mail já cadastrado
-No passo 4, se e-mail já existir no sistema:
 
-Exibe mensagem: "Este e-mail já está em uso. Recuperar senha?"
 
-Oferece opções: "Tentar outro e-mail" ou "Recuperar acesso"
 
-Exceção 2: Link de verificação expirado
-Se usuário tentar verificar após 24h:
-
-Sistema exibe: "Link expirado. Reenviar verificação?"
-
-Ao confirmar, enga novo e-mail de verificação
 
 8. Pós-condições
 Nova conta é criada no sistema (status "não verificado")
