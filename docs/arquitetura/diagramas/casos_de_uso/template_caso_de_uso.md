@@ -449,30 +449,7 @@ flowchart TD
 ```
 
 
-# Caso de Uso: 
-1. Nome do Caso de Uso
-
-4. Pré-condições
-
-
-5. Fluxo Básico
-
-6. Fluxos Alternativos
-
-
-
-7. Fluxos de Exceção
-
-
-8. Pós-condições
-
-9. Requisitos Relacionados
-
-
-10. Interface de Usuário
-
-
->>Caso de Uso: Cadastro e Verificação de Identidade
+Caso de Uso: Cadastro e Verificação de Identidade
 1. Nome do Caso de Uso
 UC004 - Cadastrar Usuário e Verificar Identidade
 
