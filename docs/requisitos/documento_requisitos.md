@@ -11,7 +11,7 @@
 
 ### 1.1 Propósito
 
-[Descrição do propósito deste documento]
+Arrumar o doc
 
 ### 1.2 Escopo
 
