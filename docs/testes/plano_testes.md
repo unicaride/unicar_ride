@@ -61,7 +61,7 @@ Simulação da experiência final do usuário
 
 #### 2.2.3 Testes de Segurança
 
-[Descrição da abordagem para testes de segurança]
+Avaliar a segurança básica do sistema
 
 #### 2.2.4 Testes de Usabilidade
 
