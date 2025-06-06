@@ -625,7 +625,7 @@ atualização do GitHub e revisão das atividades.
 Atividades do GitHub Destribuida e todo mundo atualizou sua parte.
 Artefatos produzidos:
 
-História de usuários (juliana) - [Link para o repositório ou localização]
+História de usuários (juliana) - https://github.com/unicaride/unicar_ride/tree/4a9f94b9673dca04aa771189f2aabe57f7c22812/docs/requisitos/historias_usuario
 [Artefato 2] - [Link para o repositório ou localização]
 Distribuição de tarefas:
 
