@@ -18,7 +18,6 @@ Validar a experiência do usuário em dispositivos móveis
 Testar a comunicação entre usuários através do chat interno
 Avaliar a segurança básica do sistema
 
-
 ### 1.2 Escopo
 
 O escopo dos testes inclui as funcionalidades principais do aplicativo, cadastro de usuários, criação de ofertas de carona, busca por caronas disponíveis, sistema de mensagens entre usuários.
@@ -32,24 +31,23 @@ MVP: minimum viable product
 
 ## 2. Estratégia de Teste
 
-
 ### 2.1 Níveis de Teste
 
 #### 2.1.1 Testes Unitários
 
-[Descrição da abordagem para testes unitários]
+Verificação da lógica da função, como cálculos de distancia e filtragem de caronas
 
 #### 2.1.2 Testes de Integração
 
-[Descrição da abordagem para testes de integração]
+Validação de comunicação entre front end, back-end e banco de dados.
 
 #### 2.1.3 Testes de Sistema
 
-[Descrição da abordagem para testes de sistema]
+Teste de funcionamento da aplicação
 
 #### 2.1.4 Testes de Aceitação
 
-[Descrição da abordagem para testes de aceitação]
+Simulação da experiência final do usuário
 
 ### 2.2 Tipos de Teste
 
@@ -74,7 +72,6 @@ MVP: minimum viable product
 [Descrição da abordagem para testes de regressão]
 
 ## 3. Recursos
-
 
 
 ### 3.1 Ambientes de Teste
