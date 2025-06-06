@@ -510,19 +510,36 @@ Permite que novos usuários (passageiros e motoristas) criem uma conta no sistem
 
 ## Pós-condições
 
-1. [Pós-condição 1]
-2. [Pós-condição 2]
-3. [Pós-condição n]
+1. Nova conta é criada no sistema (status "não verificado")
+2. Após verificação, conta muda para status "ativo"
+3. Usuário pode acessar todas funcionalidades básicas
 
 ## Requisitos Relacionados
 
-- [Requisito 1]
-- [Requisito 2]
-- [Requisito n]
+- RF004: Cadastro com e-mail e verificação
+- RNF002: Segurança na autenticação
+- RF008: Diferenciação passageiro/motorista
 
 ## Interface de Usuário
 
-[Descrição ou referência a protótipos/mockups]
+##### Tela de Cadastro:
+Campos: Nome, E-mail, Senha (com indicador de força)
+- Checkbox "Concordo com Termos de Uso"
+- Botão "Criar Conta"
+
+E-mail de Verificação:
+- Assunto: "Confirme seu e-mail para [NomeApp]"
+- Corpo com botão "Verificar Agora" (link válido por 24h)
+
+Tela de Documentos (Motorista):
+- Área de upload para CNH e RG/CPF
+- Preview dos documentos enviados
+- Status "Em Análise" após envio
+
+Regras de Negócio:
+- Senha deve conter: 8+ caracteres, 1 número e 1 caractere especial
+- Contas não verificadas em 7 dias são excluídas automaticamente
+- Motoristas precisam ter CNH válida e documento com foto legível
 
 ## Diagrama
 
@@ -561,49 +578,13 @@ Caso de Uso:
 
 
 8. Pós-condições
-Nova conta é criada no sistema (status "não verificado")
 
-Após verificação, conta muda para status "ativo"
-
-Usuário pode acessar todas funcionalidades básicas
 
 9. Requisitos Relacionados
-RF004: Cadastro com e-mail e verificação
 
-RNF002: Segurança na autenticação
-
-RF008: Diferenciação passageiro/motorista
 
 10. Interface de Usuário
-Tela de Cadastro:
 
-Campos: Nome, E-mail, Senha (com indicador de força)
-
-Checkbox "Concordo com Termos de Uso"
-
-Botão "Criar Conta"
-
-E-mail de Verificação:
-
-Assunto: "Confirme seu e-mail para [NomeApp]"
-
-Corpo com botão "Verificar Agora" (link válido por 24h)
-
-Tela de Documentos (Motorista):
-
-Área de upload para CNH e RG/CPF
-
-Preview dos documentos enviados
-
-Status "Em Análise" após envio
-
-Regras de Negócio:
-
-Senha deve conter: 8+ caracteres, 1 número e 1 caractere especial
-
-Contas não verificadas em 7 dias são excluídas automaticamente
-
-Motoristas precisam ter CNH válida e documento com foto legível
 
 > # Caso de Uso: Aceitar ou Recusar Solicitações de Carona
 1. Nome do Caso de Uso
