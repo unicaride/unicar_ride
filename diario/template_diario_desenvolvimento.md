@@ -608,5 +608,67 @@ Prototipagem e Design de Interface
 
 ![Captura de tela 2025-05-17 205056](https://github.com/user-attachments/assets/a794e971-0792-4a0c-9dda-2c82bd52d739)
 
+História de usuários
+Diário de Desenvolvimento - Projeto Integrador de Engenharia de Software
+Grupo: [Nome do Grupo]
 
+Integrantes: Juliana M, Luis Gustavo Quirino, Wagner, Mateus Tucunduva, Mateus Cordeiro, Luiz Gustavo Pereira, Kaio Junior
+Kauã Kemp, Murilo Nogueira.
 
+Semana 7
+Informações Básicas
+Data: 30/05/2025 Membros presentes: Juliana M, Luis Gustavo Quirino, Wagner, Mateus Tucunduva, Mateus Cordeiro, Luiz Gustavo Pereira, Kaio Junior
+Kauã Kemp, Murilo Nogueira.
+Atividades Realizadas
+atualização do GitHub e revisão das atividades. 
+
+Atividades do GitHub Destribuida e todo mundo atualizou sua parte.
+Artefatos produzidos:
+
+História de usuários (juliana) - [Link para o repositório ou localização]
+[Artefato 2] - [Link para o repositório ou localização]
+Distribuição de tarefas:
+
+[Nome do membro 1]: [Tarefas realizadas]
+[Nome do membro 2]: [Tarefas realizadas]
+[Nome do membro 3]: [Tarefas realizadas]
+Dificuldades e Soluções
+Desafios encontrados:
+
+[Descrição do desafio 1]
+[Descrição do desafio 2]
+Soluções adotadas:
+
+Para [desafio 1]: [Solução implementada]
+Para [desafio 2]: [Solução implementada]
+Conhecimentos adquiridos:
+
+[Conhecimento 1]
+[Conhecimento 2]
+Reflexão sobre Aplicação dos Conceitos
+Conceitos teóricos aplicados:
+
+[Conceito 1]: [Como foi aplicado na prática]
+[Conceito 2]: [Como foi aplicado na prática]
+Insights obtidos:
+
+[Insight 1]
+[Insight 2]
+Conexões com conteúdos anteriores:
+
+[Conexão com tema/conceito anterior]
+Próximos Passos
+Planejamento para próxima aula:
+
+[Atividade planejada 1]
+[Atividade planejada 2]
+Tarefas pendentes:
+
+[Tarefa pendente 1] - Responsável: [Nome]
+[Tarefa pendente 2] - Responsável: [Nome]
+Objetivos para próxima semana:
+
+[Objetivo 1]
+[Objetivo 2]
+Registros Visuais
+[Espaço para capturas de tela, fotos de diagramas feitos em sala, ou outros registros visuais relevantes]
