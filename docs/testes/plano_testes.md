@@ -9,7 +9,7 @@
 
 ## 1. Introdução
 
-Este documento descreve o plano de testes para o aplicativo Unicar, cujo objetivo é conectar estudantes do campus universitário interessados em oferecer ou solicitar caronas. O plano visa garantir a qualidade e o funcionamento adequado do sistema antes de sua disponibilização para uso.
+Este documento descreve o plano de testes para o aplicativo Unicaride, cujo objetivo é conectar estudantes do campus universitário interessados em oferecer ou solicitar caronas. O plano visa garantir a qualidade e o funcionamento adequado do sistema antes de sua disponibilização para uso.
 
 ### 1.1 Objetivos
 
@@ -55,29 +55,120 @@ Simulação da experiência final do usuário
 
 #### 2.2.1 Testes Funcionais
 
-[Descrição da abordagem para testes funcionais]
+Objetivo: Verificar se o passageiro consegue encontrar e visualizar caronas.
+
+Pré-condições: Passageiro logado e com caronas disponíveis cadastradas.
+
+Passos Principais:
+
+Inserir Origem e Destino: Digitar e selecionar os endereços de partida e chegada.
+Selecionar Data e Hora: Escolher a data e o horário da carona.
+Buscar Caronas: Clicar no botão de busca.
+
+Resultado Esperado:
+
+O aplicativo deve exibir corretamente uma lista de caronas compatíveis, mostrando o motorista, veículo, preço e avaliação.
+Se não houver caronas, deve mostrar uma mensagem clara como "Nenhuma carona encontrada".
 
 #### 2.2.2 Testes de Performance
 
-[Descrição da abordagem para testes de performance]
+Objetivo: Verificar se o aplicativo consegue buscar caronas rapidamente e sem falhas quando muitos usuários o utilizam ao mesmo tempo.
+
+O que faremos: Simular um grande número de passageiros (ex: 200 usuários virtuais) pesquisando caronas ao mesmo tempo, durante um período de tempo definido.
+
+Como medimos:
+
+Tempo de Resposta: Quanto tempo cada busca leva para ser concluída (esperamos que seja menos de 1 segundo para a maioria).
+Taxa de Erros: Quantas buscas falham (deve ser quase zero).
+Uso de Recursos: Se os servidores estão sobrecarregados (CPU e memória devem ficar abaixo de 80%).
+Para que serve: Garante que o aplicativo não "trave" ou fique lento nos horários de pico, oferecendo uma experiência fluida para todos os usuários.
 
 #### 2.2.3 Testes de Segurança
 
-Avaliar a segurança básica do sistema
+Avaliar a segurança básica do sistema, ver se não há vazamentos de dados, e visando oferecer uma experiencia segura, a todos os usuários do aplicativo
 
 #### 2.2.4 Testes de Usabilidade
 
-[Descrição da abordagem para testes de usabilidade]
+Objetivo: Avaliar o quão fácil, eficiente e agradável é usar o aplicativo de caronas para seus usuários (passageiros e motoristas). O foco é entender a experiência real do usuário.
+
+O que faremos: Observar usuários reais (representantes do público-alvo) realizando tarefas típicas no aplicativo, e coletar seus feedbacks.
+
+Cenários/Tarefas Típicas para Teste:
+
+Para Passageiros:
+
+Buscar e Solicitar uma Carona: Observar se o passageiro consegue facilmente encontrar e pedir uma carona, sem confusão.
+Realizar um Pagamento: Verificar se o processo de pagamento é claro e seguro.
+Avaliar um Motorista: Confirmar se é simples dar uma nota e um feedback após a viagem.
+Para Motoristas:
+
+Oferecer uma Carona: Observar se o motorista consegue cadastrar uma nova carona de forma rápida e intuitiva.
+Aceitar um Passageiro: Verificar a facilidade em gerenciar as solicitações de carona.
+Verificar Ganhos: Confirmar se o extrato de ganhos é claro e fácil de entender.
+Processo de Aprovação: Avaliar a clareza e a facilidade do processo de envio de documentos.
+Como Medimos (Métricas Comuns):
+
+Taxa de Sucesso da Tarefa: Quantos usuários conseguem completar uma tarefa sem ajuda.
+Tempo para Completar a Tarefa: Quanto tempo o usuário leva para realizar uma ação (ex: buscar e solicitar carona).
+Número de Erros: Quantos erros o usuário comete ao tentar realizar uma tarefa.
+Satisfação do Usuário: Como o usuário se sente em relação à experiência (coletado via questionários ou entrevistas).
+Pontos de Frustração: Quais são as dificuldades ou obstáculos que os usuários encontram.
+Para que serve: Este teste ajuda a identificar pontos onde o aplicativo pode ser confuso, lento ou difícil de usar. Com base nos resultados, é possível fazer melhorias no design e na interface, tornando o aplicativo mais amigável e eficiente para todos. O objetivo final é criar uma experiência de usuário fluida e positiva.
 
 #### 2.2.5 Testes de Regressão
 
-[Descrição da abordagem para testes de regressão]
+Objetivo: Garantir que novas mudanças (correções de bugs, novas funcionalidades) no aplicativo de caronas não introduziram novos problemas ou quebraram funcionalidades existentes que antes funcionavam.
+
+O que faremos: Reexecutar um conjunto de testes importantes já existentes para as funcionalidades críticas do aplicativo após cada nova alteração no código.
+
+Quando é feito:
+
+Sempre que uma nova funcionalidade é adicionada.
+Sempre que um bug é corrigido.
+Após grandes atualizações de sistema ou infraestrutura.
+Foco dos testes:
+
+Funcionalidades Essenciais:
+Login/Cadastro de Usuário.
+Busca e Solicitação de Carona (para passageiro).
+Oferta e Gerenciamento de Carona (para motorista).
+
+Integrações Chave:
+Mapas (se ainda funcionam corretamente)..
+Notificações (se ainda são enviadas).
+
+Como Medimos:
+
+Resultados Consistentes: Os testes devem passar com os mesmos resultados esperados de antes da mudança.
+Sem Novos Erros: Não deve haver o aparecimento de novos bugs ou falhas em funcionalidades que antes funcionavam.
+Para que serve: É uma "rede de segurança" para o aplicativo. Ele garante que, ao melhorar ou consertar algo, você não esteja estragando outras partes do sistema. Isso mantém a estabilidade e a qualidade do aplicativo a longo prazo, evitando que os usuários encontrem problemas em funções que eles esperam que funcionem perfeitamente.
 
 ## 3. Recursos
 
 ### 3.1 Ambientes de Teste
 
-[Descrição dos ambientes de teste]
+O que o app fará (Requisitos Funcionais)
+Para Todos: Cadastro, login e gerenciamento de perfil.
+Para Passageiros: Buscar caronas, enviar solicitações, pagar, conversar com motoristas e avaliar a viagem.
+Para Motoristas: Cadastrar veículo, passar por um processo de aprovação de segurança, oferecer caronas, gerenciar pedidos, receber ganhos, conversar com passageiros e avaliá-los.
+
+2. Como o app funcionará (Requisitos Não Funcionais)
+Performance: Será rápido e escalável, suportando muitos usuários sem lentidão.
+Segurança: Todos os dados serão protegidos e criptografados. O processo de aprovação de motoristas será rigoroso.
+Usabilidade: Será fácil de usar e intuitivo, com um design claro.
+Confiabilidade: Estará sempre disponível e lidará bem com erros.
+Compatibilidade: Funcionará perfeitamente em iOS e Android.
+
+3. Garantindo a Segurança (Aprovação de Motoristas)
+Motoristas só poderão oferecer caronas após verificação completa de CNH, e documento do seu veículo
+
+4. Testes Essenciais (Como garantimos a qualidade)
+Funcional: Verificamos se cada função (ex: buscar carona) faz o que deveria.
+Performance: Testamos a velocidade e estabilidade do app sob alta demanda.
+Segurança: Procuramos por falhas para proteger dados e evitar acessos indevidos.
+Usabilidade: Observamos usuários para garantir que o app é fácil e agradável de usar.
+Regressão: Reaplicamos testes para garantir que novas mudanças não quebrem o que já funciona.
+Ambiente de Teste: Tudo isso é feito em um ambiente seguro e separado do aplicativo real, usando dados fictícios.
 
 ### 3.2 Ferramentas
 
@@ -106,23 +197,52 @@ Visualizar se os testes foram realizados com sucesso, e se nenhum bug foi relata
 
 ### 5.3 Critérios de Suspensão e Retomada
 
-[Critérios para suspensão e retomada dos testes]
+Por que Suspender (Gatilhos):
+
+Denúncias: Outros usuários reportam problemas.
+Comportamento Ruim: Avaliações consistentemente baixas ou atividades suspeitas.
+Regras Quebradas: Violação dos termos de serviço do aplicativo.
+
+O Processo:
+
+Notificação: O usuário é avisado da suspensão, incluindo o motivo e, se aplicável, como reativar a conta.
+Bloqueio: A conta suspensa perde o acesso às funcionalidades do app.
+Registro: A suspensão é registrada internamente.
+
+Como Reativar (Retomada - apenas para suspensões temporárias):
+
+Automático: Se a suspensão for por um tempo fixo, a conta reativa sozinha após o período.
+Ação do Usuário: O usuário pode precisar fazer algo (ex: entrar em contato com o suporte, passar por um treinamento online) para ter a conta de volta.
+Revisão: Em alguns casos, o usuário pode pedir para a equipe revisar a suspensão.
 
 ## 6. Matriz de Risco e Contingência
 
-| Risco     | Probabilidade      | Impacto            | Estratégia de Mitigação |
-| --------- | ------------------ | ------------------ | ----------------------- |
-| [Risco 1] | [Alta/Média/Baixa] | [Alto/Médio/Baixo] | [Estratégia]            |
-| [Risco 2] | [Alta/Média/Baixa] | [Alto/Médio/Baixo] | [Estratégia]            |
-| ...       | ...                | ...                | ...                     |
+1-) Falhas de Segurança e Vazamento de Dados:
+
+Risco: Informações dos usuários são expostas ou sistemas invadidos.
+Plano de Contingência: Comunicar imediatamente os afetados e autoridades, acionar a equipe de segurança para investigar e corrigir, e reforçar a comunicação sobre as medidas tomadas.
+Prevenção: Usamos criptografia forte, fazemos testes de segurança constantes e monitoramos atividades suspeitas 24/7.
+
+2-) Aplicativo Fora do Ar (Indisponibilidade):
+
+Risco: Usuários não conseguem usar o app devido a problemas técnicos.
+Plano de Contingência: Ativar sistemas de reserva, acionar a equipe de TI para resolver o problema rapidamente e manter os usuários informados sobre o status.
+Prevenção: Monitoramos tudo 24/7, temos backups regulares e nossa infraestrutura na nuvem é construída para ser resistente a falhas.
 
 ## 7. Casos de Teste
 
-| ID   | Descrição   | Requisito | Pré-condições | Passos   | Resultado Esperado | Prioridade         |
-| ---- | ----------- | --------- | ------------- | -------- | ------------------ | ------------------ |
-| CT01 | [Descrição] | [Req]     | [Pré]         | [Passos] | [Resultado]        | [Alta/Média/Baixa] |
-| CT02 | [Descrição] | [Req]     | [Pré]         | [Passos] | [Resultado]        | [Alta/Média/Baixa] |
-| ...  | ...         | ...       | ...           | ...      | ...                | ...                |
+Exemplo de Caso de Teste: Verificação de CNH do Motorista
+Este caso de teste visa garantir que o aplicativo processa e verifica corretamente a CNH enviada pelo motorista.
+
+ID do Caso de Teste: CT-APROV-001
+Título do Teste: Validar a funcionalidade de envio e verificação da CNH do motorista.
+Funcionalidade Testada: Processo de Aprovação de Motorista - Verificação de CNH
+Pré-condições:
+O motorista deve ter uma conta cadastrada no aplicativo unicaride e estar logado.
+O motorista ainda não deve ter sua CNH aprovada.
+O dispositivo do motorista deve ter conexão à internet e acesso à câmera (para foto) ou à galeria de fotos.
+Ter disponível uma imagem de CNH válida para teste.
+Ter disponível uma imagem de CNH inválida (ex: vencida, ilegível, falsa) para teste.
 
 ## 8. Métricas
 
