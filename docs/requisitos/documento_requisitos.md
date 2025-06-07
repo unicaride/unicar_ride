@@ -15,7 +15,28 @@ Este documento descreve os requisitos funcionais e não funcionais do unicar, um
 
 ### 1.2 Escopo
 
-[Descrição do escopo do sistema]
+Nome: unicaride
+Propósito: Conectar motoristas que farão uma rota com passageiros que precisam de carona para o mesmo destino, otimizando viagens e reduzindo custos e tráfego.
+Público-Alvo: Pessoas que buscam transporte econômico e sustentável, e motoristas que desejam ajudar os universitarios a chegarem a seu destino.
+
+Funcionalidades Essenciais (MVP - Produto Mínimo Viável)
+Para o Passageiro:
+Cadastro e Login
+Busca de Caronas: Inserir origem, destino, data e hora. Visualizar caronas disponíveis com detalhes básicos (motorista, veículo)
+Solicitação e Confirmação: Enviar solicitação de carona e receber confirmação.
+Comunicação: Chat básico com o motorista após a confirmação.
+
+Para o Motorista:
+Cadastro e Login:
+Oferecer Carona: Informar origem, destino, data, hora, vagas disponíveis por passageiro.
+Gerenciar Solicitações: Aceitar ou recusar solicitações de passageiros.
+Comunicação: Chat básico com passageiros confirmados.
+
+Requisitos Técnicos e de Segurança (Básicos)
+Plataformas: Aplicativo mobile (iOS e Android).
+Segurança: Autenticação de usuários, criptografia de dados básicos, e um processo de verificação de motoristas.
+Usabilidade: Interface intuitiva e fácil de usar.
+
 
 ### 1.3 Definições, Acrônimos e Abreviações
 
@@ -63,20 +84,45 @@ Conformidade com leis locais de transporte e privacidade de dados (LGPD no Brasi
 
 ### 3.1 Requisitos Funcionais
 
-| ID   | Descrição                | Prioridade         |
-| ---- | ------------------------ | ------------------ |
-| RF01 | [Descrição do requisito] | [Alta/Média/Baixa] |
-| RF02 | [Descrição do requisito] | [Alta/Média/Baixa] |
-| ...  | ...                      | ...                |
+Para Todos os Usuários (Passageiro e Motorista)
+Autenticação: Permitir que o usuário crie uma conta (e-mail, redes sociais) e faça login.
+Perfil: Possibilitar a visualização e edição de informações pessoais do usuário.
+
+Para o Passageiro
+Busca de Caronas: Permitir a pesquisa de caronas informando origem, destino, data e hora.
+Solicitação: Habilitar o envio de solicitações para caronas disponíveis e a recepção de notificações sobre o status.
+ Comunicação: Fornecer um chat para contato direto com o motorista após a solicitação.
+
+Para o Motorista
+Cadastro e Verificação: Oferecer a opção de cadastrar veículo e exigir verificação de documentos (CNH, documento do veículo, antecedentes).
+Oferta de Caronas: Permitir a criação de ofertas de carona, definindo rota, data, hora, vagas e preço.
+Gerenciamento de Solicitações: Possibilitar a aceitação ou recusa de solicitações de passageiros.
+ Comunicação: Fornecer um chat para contato direto com o passageiro.
+
+
 
 ### 3.2 Requisitos Não Funcionais
 
-| ID    | Categoria   | Descrição                | Prioridade         |
-| ----- | ----------- | ------------------------ | ------------------ |
-| RNF01 | Usabilidade | [Descrição do requisito] | [Alta/Média/Baixa] |
-| RNF02 | Performance | [Descrição do requisito] | [Alta/Média/Baixa] |
-| RNF03 | Segurança   | [Descrição do requisito] | [Alta/Média/Baixa] |
-| ...   | ...         | ...                      | ...                |
+Performance:
+
+Rapidez: O aplicativo deve ser rápido, com buscas e ações respondendo em poucos segundos.
+Escalabilidade: Deve conseguir lidar com um grande número de usuários sem ficar lento.
+Segurança:
+
+Proteção de Dados: Todas as informações (pagamentos, dados pessoais) precisam ser seguras e criptografadas.
+Autenticação: O login e a verificação de motoristas devem ser robustos e à prova de fraudes.
+Usabilidade:
+
+Intuitividade: Ser fácil de usar e navegar, mesmo para quem nunca usou.
+Consistência: Ter um visual e fluxo consistentes em todas as telas.
+Confiabilidade:
+
+Disponibilidade: O aplicativo deve estar sempre funcionando (com alta disponibilidade).
+Estabilidade: Deve lidar bem com erros e se recuperar rapidamente de falhas.
+Compatibilidade:
+
+Mobile: Funcionar perfeitamente nas versões mais recentes de iOS e Android.
+Manutenção: O código deve ser organizado para facilitar futuras atualizações.
 
 ## 4. Visão Geral do Sistema
 
@@ -102,10 +148,17 @@ A seção de Casos de Uso aprofunda as interações. Cada caso descreve uma aç�
 
 ## 7. Aprovação
 
-| Nome   | Papel   | Assinatura | Data       |
-| ------ | ------- | ---------- | ---------- |
-| [Nome] | [Papel] |            | DD/MM/AAAA |
-| [Nome] | [Papel] |            | DD/MM/AAAA |
+Para garantir a segurança e a confiança na plataforma, o aplicativo implementará um rigoroso processo de aprovação para todos os motoristas:
+
+Coleta de Dados: O sistema solicitará que o motorista envie cópias digitais da CNH (Carteira Nacional de Habilitação) e do CRLV (documento do veículo).
+Verificações Essenciais:
+CNH: Validade, categoria e histórico de infrações.
+Veículo: Situação do veículo e restrições.
+Análise e Aprovação: Todos os dados e documentos passarão por uma análise.
+O motorista só será aprovado e poderá oferecer caronas após a conclusão bem-sucedida de todas as verificações.
+O status (pendente, aprovado, reprovado) será comunicado ao motorista.
+Critérios Mínimos: O veículo e o motorista devem atender a requisitos mínimos de idade e condições de segurança para serem aceitos na plataforma.
+
 
 >[!NOTE]
 >Este documento será atualizado incrementalmente ao longo do desenvolvimento do projeto.
