@@ -100,6 +100,7 @@ Para Passageiros:
 Buscar e Solicitar uma Carona: Observar se o passageiro consegue facilmente encontrar e pedir uma carona, sem confusão.
 Realizar um Pagamento: Verificar se o processo de pagamento é claro e seguro.
 Avaliar um Motorista: Confirmar se é simples dar uma nota e um feedback após a viagem.
+
 Para Motoristas:
 
 Oferecer uma Carona: Observar se o motorista consegue cadastrar uma nova carona de forma rápida e intuitiva.
@@ -147,7 +148,6 @@ Para que serve: É uma "rede de segurança" para o aplicativo. Ele garante que, 
 
 ### 3.1 Ambientes de Teste
 
-O que o app fará (Requisitos Funcionais)
 Para Todos: Cadastro, login e gerenciamento de perfil.
 Para Passageiros: Buscar caronas, enviar solicitações, pagar, conversar com motoristas e avaliar a viagem.
 Para Motoristas: Cadastrar veículo, passar por um processo de aprovação de segurança, oferecer caronas, gerenciar pedidos, receber ganhos, conversar com passageiros e avaliá-los.
@@ -246,11 +246,33 @@ Ter disponível uma imagem de CNH inválida (ex: vencida, ilegível, falsa) para
 
 ## 8. Métricas
 
-[Descrição das métricas a serem coletadas e analisadas]
+Métricas para avaliar a eficácia dos testes
+As métricas que utilizaremos, para avaliar os testes, vão ser, se o aplicativo consegue gerar uma notificação de corrida para o usuário que deseja a carona, e para o motorista se o pop up de corrida chega nele, outra métrica vai ser se o aplicativo está rodando de uma forma ‘’lisa’’, sem bugs.
+
+Critérios de cobertura mínima
+
+100% dos campos de busca (origem, destino, data, hora) devem ser testados com entradas válidas e inválidas.
+Pelo menos um cenário de "carona encontrada" e um cenário de "nenhuma carona encontrada" devem ser testados.
+A interface da lista de resultados da busca deve ser validada para garantir que todas as informações essenciais da carona (motorista, veículo, preço) são exibidas corretamente.
+
+Nível aceitável de defeitos
+O nível mínimo de defeitos que procuramos atingir, é de cerca de 65%, já a máxima que procuramos estar atingindo é de 80% de eficiência sem bugs, para dessa forma o aplicativo seguir seu fluxo normalmente.
+
 
 ## 9. Relatórios
 
-[Descrição dos relatórios a serem gerados]
+Este relatório apresenta um resumo do Plano de Teste desenvolvido para o aplicativo de caronas unicarride. O objetivo principal foi garantir a qualidade, segurança e usabilidade do aplicativo antes de seu lançamento.
+
+Estratégia de Teste
+
+Realizamos uma série de testes essenciais para cobrir diferentes aspectos do aplicativo:
+
+Testes Funcionais: Verificamos se todas as funcionalidades (busca de caronas, cadastro, pagamento, etc.) operam como esperado.
+Testes de Performance: Avaliamos a velocidade e a capacidade do aplicativo sob condições de uso intenso.
+Testes de Segurança: Buscamos vulnerabilidades para proteger os dados dos usuários e o sistema.
+Testes de Usabilidade: Analisamos a facilidade de uso e a experiência do usuário.
+Testes de Regressão: Asseguramos que novas alterações não comprometeram funcionalidades existentes.
+Os testes foram executados em um ambiente de teste separado, utilizando dados fictícios, para não impactar a operação real do aplicativo.
 
 ## 10. Aprovação
 
