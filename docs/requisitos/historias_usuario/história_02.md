@@ -1,37 +1,77 @@
-# História de Usuário_02: UC002
+# História de Usuário: UC002
 
 ## Título
-
-Pagamento Integrado
+Sistema de Pagamento Integrado (PIX/Cartão)
 
 ## Narrativa
-
-**Como** Passageiro
-**Eu quero** Como um passageiro, quero pagar pelo app usando PIX ou cartão, para evitar pagamento em dinheiro.
-**Para que** [benefício/valor]
+**Como** passageiro  
+**Eu quero** realizar pagamentos digitais seguros  
+**Para que** eu possa confirmar minha vaga sem usar dinheiro físico
 
 ## Critérios de Aceitação
+1. [x] Fluxo PIX:
+   - Geração dinâmica de QR Code
+   - Validação automática via webhook (max 2min)
+   - Opção "Copiar Código" alternativa
 
-1. O sistema deve gerar um QR Code para PIX ou link de pagamento.
-2. O motorista só recebe a confirmação após o pagamento.
-3. Deve haver recibo digital enviado por e-mail.
+2. [x] Fluxo Cartão:
+   - Integração com gateway de pagamento
+   - Tokenização de dados sensíveis (PCI Compliant)
+   - 3D Secure para compras > R$100
+
+3. [ ] Notificações:
+   - Passageiro: recibo PDF por e-mail (template HTML)
+   - Motorista: push notification + e-mail
+   - Sistema: registro no banco de dados
+
+4. [ ] Fallback:
+   - Retentativa automática em falhas de conexão
+   - Status "Pagamento Pendente" visível
 
 ## Detalhes Técnicos
+**Frontend:**
+```vue
+<PaymentOptions>
+  <PixQr :transaction-id="tx123" />
+  <CreditCardForm @submit="processPayment" />
+</PaymentOptions>
+```
 
-[Detalhes técnicos relevantes para a implementação]
+**Backend:**
+```python
+# Webhook Handler
+@app.route('/webhook/pix', methods=['POST'])
+def handle_pix():
+    verify_signature(request)
+    update_payment_status(request.json['tx_id'])
+```
+
+**Segurança:**
+- Certificado SSL (TLS 1.3)
+- Criptografia AES-256 para dados sensíveis
+- Auditoria mensal de compliance PCI-DSS
 
 ## Dependências
-
-[Histórias ou requisitos dos quais esta história depende]
+1. RF008 - Perfil de motorista verificado
+2. RNF005 - Gateway de pagamento contratado
+3. RF011 - Sistema de notificações
 
 ## Estimativa
-
-[Estimativa em Story Points]
+**Story Points:** 8  
+**Sprints:** 2 (Cenário complexo)
 
 ## Prioridade
-
-[MoSCoW: Must, Should, Could, Won't]
+**MoSCoW:** Must  
+**Business Value:** Alta  
+**Riscos:**  
+- Taxas de transação  
+- Chargebacks  
 
 ## Observações
-
-[Observações adicionais, se houver]
+1. Testar com bancos:
+   - Santander, Itaú, Nubank
+2. Limites:
+   - PIX: R$1.000/dia
+   - Cartão: R$2.500/mês
+3. Backup:
+   - SMS quando e-mail falhar
