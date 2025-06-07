@@ -819,61 +819,53 @@ Tela de Avaliação:
 ```mermaid
 flowchart TD
     %% Fluxo Principal
-    A([Motorista Autenticado]) --> B{{"Tem caronas ativas?"}}
-    B -->|Sim| C[GET /api/minhas-caronas]
-    C --> D{{"Tem solicitações pendentes?"}}
-    D -->|Sim| E[Renderiza Lista:<br/>• Nome/foto<br/>• ★ Avaliação<br/>• Curso/faculdade]
-    E --> F{{"Ação do Motorista"}}
-    F -->|Aceitar| G[PUT /api/aceitar-vaga]
-    G --> H{{"Vagas disponíveis?"}}
-    H -->|Sim| I[Reserva vaga:<br/>• DB: status='aceito'<br/>• Redis: decrementa vagas]
-    I --> J[Dispara Eventos:<br/>1. Notificação push<br/>2. Inicia fluxo pagamento]
-    F -->|Recusar| K[PUT /api/recusar-vaga<br/>status='recusado']
-    K --> L[Notifica passageiro<br/>+ Log motivo]
-    J & L --> M([Fim])
+    A([Carona Finalizada]) --> B{{"1h após término?"}}
+    B -->|Sim| C[Notifica Usuário]
+    C --> D[Acessa Histórico]
+    D --> E[Seleciona Carona]
+    E --> F[Exibe Formulário]
+    F --> G{{"Preenche:<br/>• 1-5 ★<br/>• Comentário"}}
+    G --> H{Enviar?}
+    H -->|Sim| I[Processa Avaliação]
+    I --> J[Atualiza Reputação]
+    J --> K[Notifica Avaliado]
+    K --> L([Avaliação Concluída])
 
     %% Fluxos Alternativos
-    E -->|Clica perfil| N[GET /api/perfil/{id}]
-    N --> O[Modal com:<br/>• Histórico completo<br/>• Contatos (se público)]
-    O --> F
-    D -->|Não| P[Exibe empty state]
-    H -->|Não| Q[HTTP 409 Conflict<br/>"Vagas esgotadas"]
+    G -->|≤2 ★| M[Oferece Anonimato]
+    M --> N{{"Anônimo?"}}
+    N -->|Sim| O[Oculta Identidade]
+    N -->|Não| H
+    H -->|Editar| P[Permite Ajustes]
+    P --> I
 
     %% Fluxos de Exceção
-    G -->|Conflito| R[GET /api/atualizacoes-em-tempo-real]
-    R --> S[Atualiza UI]
-    K -->|Offline| T[IndexedDB: pending_actions]
-    T -->|Online| U[Sincroniza em background]
+    B -->|Antes do término| Q[Bloqueia]
+    I -->|Sem Conexão| R[Salva Rascunho]
+    R --> S{{"Tentar novamente?"}}
+    S -->|Sim| I
+    S -->|Não| T[Falha]
 
     %% Regras de Negócio
-    subgraph RB ["Business Rules"]
-        direction TB
-        RB1["• 24h timeout (Cron Job)<br/>• Máx 3 recusas consecutivas<br/>• Pagamento em 5min"]
-        RB2["• WebSocket para atualizações<br/>• Exponential backoff offline"]
-    end
-
-    %% Tecnologias
-    subgraph TECH ["Stack"]
-        direction TB
-        TECH1["• Front: React + Material-UI<br/>• API: NestJS"]
-        TECH2["• DB: PostgreSQL<br/>• Cache: Redis"]
+    subgraph RB["Regras"]
+        RB1["• Período: 7 dias"]
+        RB2["• Peso temporal"]
+        RB3["• Filtro de conteúdo"]
     end
 
     %% Estilos
     style A fill:#2ecc71,stroke:#27ae60
-    style M fill:#2ecc71,stroke:#27ae60
+    style L fill:#2ecc71,stroke:#27ae60
     style I fill:#3498db,stroke:#2980b9
-    style K fill:#e67e22,stroke:#d35400
     style Q fill:#e74c3c,stroke:#c0392b
+    style M fill:#f39c12,stroke:#d35400
     style RB fill:#f8f9fa,stroke:#495057
-    style TECH fill:#e8f4fc,stroke:#2980b9
 
     classDef success fill:#2ecc71,stroke:#27ae60
     classDef process fill:#3498db,stroke:#2980b9
     classDef warning fill:#f39c12,stroke:#d35400
     classDef error fill:#e74c3c,stroke:#c0392b
     classDef rules fill:#f8f9fa,stroke:#495057
-    classDef tech fill:#e8f4fc,stroke:#2980b9
 ```
 
 
@@ -976,36 +968,35 @@ Permite que motoristas cancelem caronas previamente agendadas, desde que realiza
 ```mermaid
 flowchart TD
     %% Fluxo Principal
-    A([Motorista Autenticado]) --> B{{"Tem caronas ativas?"}}
-    B -->|Sim| C[Acessa 'Minhas Caronas']
-    C --> D{{"Tem solicitações pendentes?"}}
-    D -->|Sim| E[Exibe Cards de Passageiros<br/>- Nome/Foto<br/>- Avaliação (★)<br/>- Curso/Faculdade]
-    E --> F{{"Ação do Motorista"}}
+    A([Motorista Autenticado]) --> B{Tem caronas ativas?}
+    B -->|Sim| C[Acessa Minhas Caronas]
+    C --> D{Tem solicitações pendentes?}
+    D -->|Sim| E[Exibe Cards de Passageiros]
+    E --> F{Ação do Motorista}
     F -->|Aceitar| G[Verifica Vagas]
-    G --> H{{"Vagas disponíveis?"}}
-    H -->|Sim| I[Reserva Vaga<br/>- Atualiza contador<br/>- Bloqueia assento]
-    I --> J[Dispara Eventos:<br/>1. Notificação Push<br/>2. Email de confirmação<br/>3. Inicia RF002]
-    F -->|Recusar| K[Arquiva Solicitação<br/>+ Registra motivo opcional]
-    K --> L[Notifica Passageiro<br/>"Solicitação recusada"]
+    G --> H{Vagas disponíveis?}
+    H -->|Sim| I[Reserva Vaga]
+    I --> J[Dispara Eventos]
+    F -->|Recusar| K[Arquiva Solicitação]
+    K --> L[Notifica Passageiro]
     J & L --> M([Fim])
 
     %% Fluxos Alternativos
-    E -->|Clica no Card| N[Modal Completo:<br/>- Histórico de caronas<br/>- 5 últimas avaliações<br/>- Contato (se público)]
+    E -->|Clica no Card| N[Modal Completo]
     N --> F
-    D -->|Não| O[Exibe:<br/>"Nenhuma solicitação pendente"]
-    H -->|Não| P[Exibe:<br/>"Vagas esgotadas!"<br/>+ Sugere ampliar oferta]
+    D -->|Não| O[Exibe Nenhuma solicitação]
+    H -->|Não| P[Exibe Vagas esgotadas]
 
     %% Fluxos de Exceção
-    F -->|Timeout 24h| Q[Status → Expirado<br/>Notifica ambos]
-    G -->|Conflito de dados| R[Sincroniza em tempo real<br/>Exibe:"Dados atualizados"]
-    J -->|Falha na Notificação| S[3 tentativas<br/>+ Log de erro]
+    F -->|Timeout 24h| Q[Status Expirado]
+    G -->|Conflito de dados| R[Sincroniza em tempo real]
+    J -->|Falha na Notificação| S[3 tentativas]
 
-    %% Regras de Negócio
-    subgraph RB ["Regras de Negócio"]
-        direction TB
-        RB1["• 24h para resposta<br/>• Máx 3 recusas consecutivas<br/>• Pagamento inicia em 5min"]
-        RB2["• Notificação via FCM<br/>• Email via SendGrid<br/>• Sincronização offline"]
-    end
+    %% Legendas
+    E -.->|"Nome/Foto<br>Avaliação*<br>Curso/Faculdade"| ELABEL[" "]
+    I -.->|"Atualiza contador<br>Bloqueia assento"| ILABEL[" "]
+    J -.->|"1. Notificação Push<br>2. Email<br>3. Inicia pagamento"| JLABEL[" "]
+    K -.->|"+ Registra motivo"| KLABEL[" "]
 
     %% Estilos
     style A fill:#2ecc71,stroke:#27ae60
@@ -1014,13 +1005,11 @@ flowchart TD
     style K fill:#e67e22,stroke:#d35400
     style Q fill:#e74c3c,stroke:#c0392b
     style R fill:#f39c12,stroke:#d35400
-    style RB fill:#f8f9fa,stroke:#495057
 
     classDef success fill:#2ecc71,stroke:#27ae60
     classDef process fill:#3498db,stroke:#2980b9
     classDef warning fill:#f39c12,stroke:#d35400
     classDef error fill:#e74c3c,stroke:#c0392b
-    classDef rules fill:#f8f9fa,stroke:#495057
 ```
 
 # Caso de Uso: UC008
@@ -1134,44 +1123,28 @@ Permite que motoristas cadastrados criem ofertas de caronas compartilhadas, info
 ```mermaid
 flowchart TD
     %% Fluxo Principal
-    A([Motorista Verificado]) --> B{{"Possui veículo cadastrado?"}}
-    B -->|Sim/Não| C[Acessa 'Oferecer Carona']
-    C --> D[Exibe Formulário Interativo]
-    D --> E[Preenche:<br/>• Partida (autocomplete)<br/>• Destino<br/>• Data/Horário<br/>• Vagas (1-4)<br/>• Valor (opcional)]
-    E --> F{{"Todos campos válidos?"}}
+    A([Motorista Verificado]) --> B{Possui veículo?}
+    B -->|Sim/Não| C[Acessa Oferecer Carona]
+    C --> D[Exibe Formulário]
+    D --> E[Preenche campos]
+    E --> F{Campos válidos?}
     F -->|Sim| G[Exibe Pré-visualização]
-    G --> H{{"Confirmar publicação?"}}
+    G --> H{Publicar?}
     H -->|Sim| I[Publica Carona]
     I --> J[Status: Disponível]
-    J --> K[Notificações Ativadas]
-    K --> L([Carona Ativa])
+    J --> K[Notificações]
+    K --> L([Fim])
 
     %% Fluxos Alternativos
-    E -->|"Recorrente?"| M[Adiciona:<br/>• Dias da semana<br/>• Data final]
+    E -->|Recorrente| M[Adiciona periodicidade]
     M --> G
-    E -->|"Usar Localização"| N[Preenche Partida via GPS]
+    E -->|GPS| N[Preenche localização]
     N --> G
 
     %% Fluxos de Exceção
-    B -->|Não Verificado| O[Exibe Modal:<br/>"Complete sua verificação"]
-    O --> P[Redireciona para Cadastro]
-    F -->|Horário Inválido| Q[Exibe Toast:<br/>"Selecione horário futuro"]
+    B -->|Não Verificado| O[Redireciona]
+    F -->|Horário inválido| Q[Rejeita]
     Q --> E
-    H -->|Cancelar| R[Volta para Edição]
-
-    %% Regras de Negócio
-    subgraph RN["Regras Críticas"]
-        direction TB
-        RN1["• Máx 5 caronas ativas<br/>• Publicação mínima: 1h antes<br/>• Agrupamento automático"]
-        RN2["• Validação geográfica<br/>• Cache de locais frequentes"]
-    end
-
-    %% Componentes Técnicos
-    subgraph CT["Tecnologias"]
-        direction TB
-        CT1["• Autocomplete: Places API<br/>• Datetime Picker: Flatpickr"]
-        CT2["• Mapas: Leaflet.js<br/>• Validação: Joi"]
-    end
 
     %% Estilos
     style A fill:#2ecc71,stroke:#27ae60
@@ -1179,13 +1152,17 @@ flowchart TD
     style I fill:#3498db,stroke:#2980b9
     style O fill:#e74c3c,stroke:#c0392b
     style M fill:#f39c12,stroke:#d35400
-    style RN fill:#f8f9fa,stroke:#495057
-    style CT fill:#e8f4fc,stroke:#2980b9
 
     classDef success fill:#2ecc71,stroke:#27ae60
     classDef process fill:#3498db,stroke:#2980b9
     classDef warning fill:#f39c12,stroke:#d35400
     classDef error fill:#e74c3c,stroke:#c0392b
-    classDef rules fill:#f8f9fa,stroke:#495057
-    classDef tech fill:#e8f4fc,stroke:#2980b9
+
+    %% Anotações (como comentários)
+    %% Campos do formulário:
+    %% - Partida (autocomplete)
+    %% - Destino
+    %% - Data/Horário
+    %% - Vagas (1-4)
+    %% - Valor opcional
 ```
