@@ -5,7 +5,7 @@ Cancelar carona
 
 ## Narrativa
 
-**Como** ,otorista
+**Como** motorista
 **Eu quero** cancelar uma carona, para não manter compromissos que não poderei cumprir.
 **Para que**
 
