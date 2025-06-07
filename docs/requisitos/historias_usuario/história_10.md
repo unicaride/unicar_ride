@@ -1,13 +1,13 @@
- # História de Usuário_09: UC010
+ # História de Usuário_10: UC010
 
 ## Título
-
+Acessibilidade
 
 ## Narrativa
 
-**Como** 
-**eu quero** 
-**para que**
+**Como** Usuário
+**eu quero** um aplicativo que possua acessibilidade
+**para que** Eu possa estar utilizando os recursos de acessibilidade, caso eu possua dificilcudades
 
 ## Critérios de Aceitação
 
