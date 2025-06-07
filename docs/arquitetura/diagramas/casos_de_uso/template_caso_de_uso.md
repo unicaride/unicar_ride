@@ -543,295 +543,365 @@ Regras de Negócio:
 
 ## Diagrama
 
+```mermaid
+flowchart TD
+    %% Fluxo Principal
+    A([Acessa App]) --> B[Tela Inicial]
+    B --> C[Clique em Criar Conta]
+    C --> D[Exibe Formulário]
+    D --> E[Preenche: Nome, Email, Senha]
+    E --> F{Valida Dados}
+    F -->|Válidos| G[Envia Email Verificação]
+    G --> H[Usuário Verifica Email]
+    H --> I[Redireciona para Perfil]
+    I --> J([Cadastro Completo])
+
+    %% Fluxo Alternativo (Motorista)
+    I -->|Quer ser Motorista| K[Solicita Documentos]
+    K --> L[Upload CNH + RG/CPF]
+    L --> M[Envia para Análise]
+    M -->|Aprovado| N[Libera Perfil Motorista]
+    M -->|Rejeitado| O[Notifica + Solicita Reenvio]
+
+    %% Fluxos de Exceção
+    F -->|Email Existente| P[Exibe Mensagem]
+    P --> Q{Opção}
+    Q -->|Novo Email| D
+    Q -->|Recuperar Senha| R[Fluxo Recuperação]
+
+    H -->|Link Expirado| S[Oferece Reenvio]
+    S -->|Confirma| G
+
+    %% Estilos
+    style A fill:#2ecc71,stroke:#27ae60
+    style J fill:#2ecc71,stroke:#27ae60
+    style N fill:#3498db,stroke:#2980b9
+    style P fill:#e74c3c,stroke:#c0392b
+    style S fill:#f39c12,stroke:#d35400
+
+    %% Legenda Implícita
+    classDef success fill:#2ecc71,stroke:#27ae60
+    classDef process fill:#3498db,stroke:#2980b9
+    classDef error fill:#e74c3c,stroke:#c0392b
+    classDef warning fill:#f39c12,stroke:#d35400
+```
 
 
+# Caso de Uso:UC005
 
 
+## Nome
 
+ Aceitar ou Recusar Solicitações de Carona
 
+## Descrição
 
-
-
-
-
-
-
-
-
-
-
-Caso de Uso: 
-3. Atores
-
-
-4. Pré-condições
-
-5. Fluxo Básico
-
-
-6. Fluxos Alternativos
-
-
-7. Fluxos de Exceção
-
-
-
-
-8. Pós-condições
-
-
-9. Requisitos Relacionados
-
-
-10. Interface de Usuário
-
-
-> # Caso de Uso: Aceitar ou Recusar Solicitações de Carona
-1. Nome do Caso de Uso
-UC005 - Gerenciar Solicitações de Carona
-
-2. Descrição
 Permite que motoristas visualizem e respondam às solicitações de passageiros para suas caronas oferecidas, podendo aceitar ou recusar cada pedido individualmente.
 
-3. Atores
-Ator Primário: Motorista
+## Atores
 
-Atores Secundários:
+- Ator Primário: Motorista
+- Atores Secundários: Passageiro (solicitante) e Sistema de Notificações
 
-Passageiro (solicitante)
+## Pré-condições
 
-Sistema de Notificações
+1. O usuário está autenticado como motorista
+2. Existe pelo menos uma carona criada pelo motorista
+3. Há solicitações pendentes para essa carona
 
-4. Pré-condições
-O usuário está autenticado como motorista
+## Fluxo Básico
 
-Existe pelo menos uma carona criada pelo motorista
+1. O motorista acessa a seção "Minhas Caronas"
+2. Seleciona a carona específica com solicitações pendentes
+3. O sistema exibe a lista de solicitantes com:
+  - Nome e foto do passageiro
+  - Curso/faculdade (se disponível)
+  - Avaliação média (estrelas)
+4. Para cada solicitação, o motorista pode:
+  - Clicar em "Aceitar" para confirmar a vaga
+  - Clicar em "Recusar" para negar a solicitação
+  - O sistema atualiza o status e notifica o passageiro
 
-Há solicitações pendentes para essa carona
+## Fluxos Alternativos
 
-5. Fluxo Básico
-O motorista acessa a seção "Minhas Caronas"
+### Alternativa 1: Visualizar Perfil Completo do Passageiro
 
-Seleciona a carona específica com solicitações pendentes
+1. No passo 3, o motorista clica no nome do passageiro
+2. O sistema exibe perfil completo com:
+- Histórico de caronas anteriores
+- Comentários de avaliações
+- Informações de contato (se permitido)
 
-O sistema exibe a lista de solicitantes com:
+### Alternativa 2: Vagas Esgotadas
 
-Nome e foto do passageiro
+1. Se todas as vagas já estiverem preenchidas:
+- O sistema desabilita novos "Aceitar"
+- Exibe: "Todas as vagas já foram preenchidas"
 
-Curso/faculdade (se disponível)
+## Fluxos de Exceção
 
-Avaliação média (estrelas)
+### Exceção 1: Solicitação Já Respondida
 
-Para cada solicitação, o motorista pode:
+1. Se outro dispositivo já tiver respondido:
+- Exibe: "Esta solicitação já foi processada"
+- Atualiza a lista em tempo real
 
-Clicar em "Aceitar" para confirmar a vaga
+### Exceção 2: Conexão Perdida
 
-Clicar em "Recusar" para negar a solicitação
+1. Se a conexão falhar durante o processo:
+2. Mantém ações locais e sincroniza quando reconectar
+3. Exibe: "Conectando... suas ações serão salvas"
 
-O sistema atualiza o status e notifica o passageiro
+## Pós-condições
 
-6. Fluxos Alternativos
-Alternativa 1: Visualizar Perfil Completo do Passageiro
-No passo 3, o motorista clica no nome do passageiro
+ ##### 1. Para aceites:
+- Passageiro recebe confirmação
+- Vaga é reservada oficialmente
+- Sistema inicia processo de pagamento
+##### 2. Para recusas:
+- Passageiro recebe notificação
+- Solicitação é arquivada
 
-O sistema exibe perfil completo com:
+## Requisitos Relacionados
 
-Histórico de caronas anteriores
+- RF005: Motorista gerencia solicitações
+- RF001: Passageiro busca caronas
+- RF002: Pagamento após aceite
 
-Comentários de avaliações
+## Interface de Usuário
 
-Informações de contato (se permitido)
+##### Tela de Solicitações: Lista com cards de cada passageiro
+- Botões "Aceitar" (verde) e "Recusar" (vermelho)
+- Contador "Vagas: 2/4"
+- Notificação para Passageiro: Push notification: "Sua solicitação foi (aceita/recusada) por (Motorista)"
+- Regras de Negócio: Motorista tem 24h para responder antes da solicitação expirar
+- Passageiros recusados podem solicitar outras caronas
+- Aceite gera obrigação de pagamento pelo passageiro
 
-Alternativa 2: Vagas Esgotadas
-Se todas as vagas já estiverem preenchidas:
+## Diagrama
 
-O sistema desabilita novos "Aceitar"
+```mermaid
+flowchart TD
+    %% Fluxo Principal
+    A([Motorista Logado]) --> B[Acessa 'Minhas Caronas']
+    B --> C{Carona com solicitações?}
+    C -->|Sim| D[Exibe Lista de Solicitantes]
+    D --> E[Mostra: Nome, Foto, Avaliação]
+    E --> F{Ação do Motorista}
+    F -->|Aceitar| G[Reserva Vaga]
+    G --> H[Notifica Passageiro]
+    H --> I[Inicia Processo Pagamento]
+    F -->|Recusar| J[Arquiva Solicitação]
+    J --> K[Notifica Passageiro]
+    I & K --> L([Finalizado])
 
-Exibe: "Todas as vagas já foram preenchidas"
+    %% Fluxos Alternativos
+    E -->|Clica no Passageiro| M[Exibe Perfil Completo]
+    M --> F
+    C -->|Vagas Esgotadas| N[Desabilita Aceitar]
+    N --> O[Exibe Mensagem]
 
-7. Fluxos de Exceção
-Exceção 1: Solicitação Já Respondida
-Se outro dispositivo já tiver respondido:
+    %% Fluxos de Exceção
+    F -->|Solicitação Já Respondida| P[Atualiza Lista]
+    P --> Q[Exibe Alerta]
+    G & J -->|Sem Conexão| R[Tenta Reconexão]
+    R -->|Sucesso| S[Sincroniza Ações]
+    R -->|Falha| T[Salva Localmente]
 
-Exibe: "Esta solicitação já foi processada"
+    %% Estilos
+    style A fill:#2ecc71,stroke:#27ae60
+    style L fill:#2ecc71,stroke:#27ae60
+    style G fill:#3498db,stroke:#2980b9
+    style J fill:#e67e22,stroke:#d35400
+    style P fill:#e74c3c,stroke:#c0392b
+    style R fill:#f39c12,stroke:#d35400
 
-Atualiza a lista em tempo real
+    classDef success fill:#2ecc71,stroke:#27ae60
+    classDef process fill:#3498db,stroke:#2980b9
+    classDef warning fill:#f39c12,stroke:#d35400
+    classDef error fill:#e74c3c,stroke:#c0392b
+```
 
-Exceção 2: Conexão Perdida
-Se a conexão falhar durante o processo:
+# Caso de Uso: UC006 
 
-Mantém ações locais e sincroniza quando reconectar
+## Nome
 
-Exibe: "Conectando... suas ações serão salvas"
+Avaliar Outro Usuário após Carona
 
-8. Pós-condições
-Para aceites:
+## Descrição
 
-Passageiro recebe confirmação
-
-Vaga é reservada oficialmente
-
-Sistema inicia processo de pagamento
-
-Para recusas:
-
-Passageiro recebe notificação
-
-Solicitação é arquivada
-
-9. Requisitos Relacionados
-RF005: Motorista gerencia solicitações
-
-RF001: Passageiro busca caronas
-
-RF002: Pagamento após aceite
-
-10. Interface de Usuário
-Tela de Solicitações:
-
-Lista com cards de cada passageiro
-
-Botões "Aceitar" (verde) e "Recusar" (vermelho)
-
-Contador "Vagas: 2/4"
-
-Notificação para Passageiro:
-
-Push notification: "Sua solicitação foi [aceita/recusada] por [Motorista]"
-
-Regras de Negócio:
-
-Motorista tem 24h para responder antes da solicitação expirar
-
-Passageiros recusados podem solicitar outras caronas
-
-Aceite gera obrigação de pagamento pelo passageiro
-
-
-> # Caso de Uso: Avaliar Outro Usuário após Carona
-1. Nome do Caso de Uso
-UC006 - Avaliar Participante da Carona
-
-2. Descrição
 Permite que usuários (passageiros e motoristas) avaliem uns aos outros após a conclusão de uma carona, atribuindo notas de 1 a 5 estrelas e comentários opcionais, contribuindo para a reputação no sistema.
 
-3. Atores
-Ator Primário: Usuário (Passageiro ou Motorista)
+## Atores
 
-Ator Secundário: Sistema de Reputação
+- Ator Primário: Usuário (Passageiro ou Motorista)
+- Ator Secundário: Sistema de Reputação
 
-4. Pré-condições
-A carona foi concluída (status "Finalizada")
+## Pré-condições
 
-O usuário ainda não avaliou o outro participante
+1. A carona foi concluída (status "Finalizada")
+2. O usuário ainda não avaliou o outro participante
+3. O usuário está autenticado no sistema
 
-O usuário está autenticado no sistema
+## Fluxo Básico
 
-5. Fluxo Básico
-Após 1 hora da finalização da carona, o sistema envia notificação:
-"Avalie sua experiência com [Nome do Participante]"
+1. Após 1 hora da finalização da carona, o sistema envia notificação:
+- "Avalie sua experiência com [(Nome do Participante)"
+2. O usuário acessa a seção "Histórico de Caronas"
+3. Seleciona a carona concluída e clica em "Avaliar"
+4. O sistema exibe formulário com:
+- Seletor de 1-5 estrelas (obrigatório)
+5. Campo de texto para comentário (opcional, até 200 caracteres)
+6. O usuário preenche a avaliação e clica em "Enviar"
+7. O sistema:
+- Atualiza a média do participante avaliado
+- Armazena a avaliação no histórico
+- Notifica o avaliado sobre a nova avaliação
 
-O usuário acessa a seção "Histórico de Caronas"
+## Fluxos Alternativos
 
-Seleciona a carona concluída e clica em "Avaliar"
+### Alternativa 1: Avaliação Anônima
 
-O sistema exibe formulário com:
+1. Para avaliações negativas (≤ 2 estrelas):
+- O sistema oferece opção "Enviar anonimamente"
+2. Comentários não identificam o avaliador
 
-Seletor de 1-5 estrelas (obrigatório)
+### Alternativa 2: Edição de Avaliação
 
-Campo de texto para comentário (opcional, até 200 caracteres)
+1. Se o usuário enviar por engano:
+- Permite editar dentro de 2 horas após envio
+2. Após este período, avaliação torna-se permanente
+  
+## Fluxos de Exceção
 
-O usuário preenche a avaliação e clica em "Enviar"
+### Exceção 1: Tentativa de Avaliação Antecipada
 
-O sistema:
+1. Se tentar avaliar antes da carona terminar:
+2. Sistema bloqueia com mensagem:
+- "Avalie apenas após o término da carona"
 
-Atualiza a média do participante avaliado
+### Exceção 2: Conexão Interrompida
 
-Armazena a avaliação no histórico
+1. Se falhar durante o envio:
+- Salva rascunho localmente
+- Exibe: "Avaliação não enviada. Tentar novamente?"
 
-Notifica o avaliado sobre a nova avaliação
+## Pós-condições
 
-6. Fluxos Alternativos
-Alternativa 1: Avaliação Anônima
-Para avaliações negativas (≤ 2 estrelas):
+1. A avaliação é vinculada permanentemente ao perfil do avaliado
+2. A média de estrelas é recalculada automaticamente
+3. O avaliador não pode reavaliar o mesmo usuário para aquela carona
 
-O sistema oferece opção "Enviar anonimamente"
+## Requisitos Relacionados
 
-Comentários não identificam o avaliador
+- RF006: Avaliação pós-carona
+- RF003: Exibição no perfil
+- RNF003: Notificações em tempo real
+  
+## Interface de Usuário
 
-Alternativa 2: Edição de Avaliação
-Se o usuário enviar por engano:
-
-Permite editar dentro de 2 horas após envio
-
-Após este período, avaliação torna-se permanente
-
-7. Fluxos de Exceção
-Exceção 1: Tentativa de Avaliação Antecipada
-Se tentar avaliar antes da carona terminar:
-
-Sistema bloqueia com mensagem:
-"Avalie apenas após o término da carona"
-
-Exceção 2: Conexão Interrompida
-Se falhar durante o envio:
-
-Salva rascunho localmente
-
-Exibe: "Avaliação não enviada. Tentar novamente?"
-
-8. Pós-condições
-A avaliação é vinculada permanentemente ao perfil do avaliado
-
-A média de estrelas é recalculada automaticamente
-
-O avaliador não pode reavaliar o mesmo usuário para aquela carona
-
-9. Requisitos Relacionados
-RF006: Avaliação pós-carona
-
-RF003: Exibição no perfil
-
-RNF003: Notificações em tempo real
-
-10. Interface de Usuário
 Tela de Avaliação:
-[Ícone de estrelas (1-5 interativas)]  
-[Campo de texto: "Compartilhe sua experiência (opcional)"]  
-[Contador: "200 caracteres restantes"]  
-[Checkbox: "Enviar anonimamente" (se ≤2 estrelas)]  
-[Botão "Enviar Avaliação"]  
-Notificação para o Avaliado:
-"Você recebeu uma nova avaliação de [X estrelas]!"  
-[Visualizar comentário]  
-Regras de Negócio:
+- Ícone de estrelas (1-5 interativas) 
+- Campo de texto: "Compartilhe sua experiência (opcional)"]  
+- Contador: "200 caracteres restantes"]  
+- Checkbox: "Enviar anonimamente" (se ≤2 estrelas)]  
+- Botão "Enviar Avaliação"]  
+- Notificação para o Avaliado:
+"Você recebeu uma nova avaliação de [(X estrelas)!"  
+- Visualizar comentário]  
+- Regras de Negócio:
+    - Período de avaliação: até 7 dias após a carona
+    - Média calculada com peso temporal (avaliações recentes têm maior impacto)
+    - Comentários ofensivos são filtrados automaticamente
 
-Período de avaliação: até 7 dias após a carona
+## Diagrama
 
-Média calculada com peso temporal (avaliações recentes têm maior impacto)
+```mermaid
+flowchart TD
+    %% Fluxo Principal
+    A([Motorista Autenticado]) --> B{{"Tem caronas ativas?"}}
+    B -->|Sim| C[GET /api/minhas-caronas]
+    C --> D{{"Tem solicitações pendentes?"}}
+    D -->|Sim| E[Renderiza Lista:<br/>• Nome/foto<br/>• ★ Avaliação<br/>• Curso/faculdade]
+    E --> F{{"Ação do Motorista"}}
+    F -->|Aceitar| G[PUT /api/aceitar-vaga]
+    G --> H{{"Vagas disponíveis?"}}
+    H -->|Sim| I[Reserva vaga:<br/>• DB: status='aceito'<br/>• Redis: decrementa vagas]
+    I --> J[Dispara Eventos:<br/>1. Notificação push<br/>2. Inicia fluxo pagamento]
+    F -->|Recusar| K[PUT /api/recusar-vaga<br/>status='recusado']
+    K --> L[Notifica passageiro<br/>+ Log motivo]
+    J & L --> M([Fim])
 
-Comentários ofensivos são filtrados automaticamente
+    %% Fluxos Alternativos
+    E -->|Clica perfil| N[GET /api/perfil/{id}]
+    N --> O[Modal com:<br/>• Histórico completo<br/>• Contatos (se público)]
+    O --> F
+    D -->|Não| P[Exibe empty state]
+    H -->|Não| Q[HTTP 409 Conflict<br/>"Vagas esgotadas"]
 
-> # # **Caso de Uso: Cancelar Carona (Motorista)**
+    %% Fluxos de Exceção
+    G -->|Conflito| R[GET /api/atualizacoes-em-tempo-real]
+    R --> S[Atualiza UI]
+    K -->|Offline| T[IndexedDB: pending_actions]
+    T -->|Online| U[Sincroniza em background]
 
-## **1. Nome do Caso de Uso**  
-**UC007 - Cancelar Carona por Motorista**
+    %% Regras de Negócio
+    subgraph RB ["Business Rules"]
+        direction TB
+        RB1["• 24h timeout (Cron Job)<br/>• Máx 3 recusas consecutivas<br/>• Pagamento em 5min"]
+        RB2["• WebSocket para atualizações<br/>• Exponential backoff offline"]
+    end
 
-## **2. Descrição**  
+    %% Tecnologias
+    subgraph TECH ["Stack"]
+        direction TB
+        TECH1["• Front: React + Material-UI<br/>• API: NestJS"]
+        TECH2["• DB: PostgreSQL<br/>• Cache: Redis"]
+    end
+
+    %% Estilos
+    style A fill:#2ecc71,stroke:#27ae60
+    style M fill:#2ecc71,stroke:#27ae60
+    style I fill:#3498db,stroke:#2980b9
+    style K fill:#e67e22,stroke:#d35400
+    style Q fill:#e74c3c,stroke:#c0392b
+    style RB fill:#f8f9fa,stroke:#495057
+    style TECH fill:#e8f4fc,stroke:#2980b9
+
+    classDef success fill:#2ecc71,stroke:#27ae60
+    classDef process fill:#3498db,stroke:#2980b9
+    classDef warning fill:#f39c12,stroke:#d35400
+    classDef error fill:#e74c3c,stroke:#c0392b
+    classDef rules fill:#f8f9fa,stroke:#495057
+    classDef tech fill:#e8f4fc,stroke:#2980b9
+```
+
+
+# Caso de Uso: UC007
+
+## Nome do Caso de Uso  
+
+Cancelar Carona por Motorista
+
+##  Descrição
+
 Permite que motoristas cancelem caronas previamente agendadas, desde que realizado dentro do prazo estabelecido (até 2 horas antes do horário marcado), com notificação automática a todos os passageiros afetados.
 
-## **3. Atores**  
-- **Ator Primário:** Motorista  
-- **Atores Secundários:**  
+## Atores
+
+- Ator Primário:** Motorista  
+- Atores Secundários:  
   - Passageiros (notificados sobre o cancelamento)  
   - Sistema de Reembolsos (se aplicável)  
 
-## **4. Pré-condições**  
+## Pré-condições
+
 1. O motorista está autenticado no sistema  
 2. Existe pelo menos uma carona agendada criada pelo motorista  
 3. O horário atual é pelo menos 2 horas antes do horário marcado da carona  
 
-## **5. Fluxo Básico**  
+## Fluxo Básico
+
 1. O motorista acessa a seção "Minhas Caronas"  
 2. Seleciona a carona que deseja cancelar  
 3. O sistema exibe o botão "Cancelar Carona"  
@@ -842,84 +912,140 @@ Permite que motoristas cancelem caronas previamente agendadas, desde que realiza
    - Inicia processo de reembolso (se pagamento foi realizado)  
 6. O motorista recebe confirmação do cancelamento  
 
-## **6. Fluxos Alternativos**  
+## Fluxos Alternativos 
 
-### **Alternativa 1: Cancelamento com Reembolso**  
+## Alternativa 1: Cancelamento com Reembolso
+
 1. Se passageiros já pagaram:  
    - Sistema processa reembolso automático  
    - Envia e-mail com comprovante de reembolso  
 
-### **Alternativa 2: Sugerir Nova Carona**  
+## Alternativa 2: Sugerir Nova Carona
+
 1. O sistema pode sugerir:  
    - "Deseja reagendar esta carona?"  
    - Se sim, redireciona para tela de edição  
 
-## **7. Fluxos de Exceção**  
+## Fluxos de Exceção
 
-### **Exceção 1: Tentativa de Cancelamento Tardio**  
+## Exceção 1: Tentativa de Cancelamento Tardio
+
 1. Se motorista tentar cancelar com menos de 2 horas:  
    - Sistema exibe:  
-   *"Cancelamento não permitido. Contate os passageiros diretamente."*  
+   - "Cancelamento não permitido. Contate os passageiros diretamente." 
 
-### **Exceção 2: Falha na Notificação**  
+## Exceção 2: Falha na Notificação
+
 1. Se algum passageiro não receber notificação:  
    - Sistema mantém registro e reenvia a cada 15 minutos  
    - Exibe para motorista:  
-   *"Alguns passageiros ainda não foram notificados"*  
+   "Alguns passageiros ainda não foram notificados"  
 
-## **8. Pós-condições**  
+## Pós-condições  
+
 1. A carona é removida do sistema  
 2. Todos os passageiros são notificados  
 3. Status é atualizado no histórico do motorista  
 4. Reembolsos são processados quando aplicável  
 
-## **9. Requisitos Relacionados**  
-- **RF007:** Cancelamento por motorista  
-- **RF002:** Processo de reembolso  
-- **RNF003:** Notificações em tempo real  
+##  Requisitos Relacionados
 
-## **10. Interface de Usuário**  
+- RF007: Cancelamento por motorista  
+- RF002: Processo de reembolso  
+- RNF003: Notificações em tempo real  
 
-### **Tela de Cancelamento:**  
+## Interface de Usuário 
+
+1. Tela de Cancelamento:  
+  - Título: "Cancelar Carona para [Destino]?"  
+  - Mensagem: "Esta ação notificará todos os passageiros" 
+  - Botão "Confirmar Cancelamento" (vermelho)  
+  - Botão "Voltar" (cinza)
+2. Notificação para Passageiros:
+  - "ATENÇÃO: Carona para (Destino) foi cancelada"  
+  - "Motivo: Opções pré-definidas"  
+  - "Valor será reembolsado em até 5 dias úteis" (se aplicável)  
+3. Regras de Negócio:
+    - Janela de cancelamento: até 2 horas antes da carona  
+    - Limite de cancelamentos: máximo 3 por mês para evitar abusos  
+    - Passageiros frequentes em caronas canceladas recebem créditos de compensação  
+4. Este caso de uso garante um processo justo e transparente para cancelamentos, protegendo tanto motoristas quanto passageiros.
+
+# Diagrama
+
+```mermaid
+flowchart TD
+    %% Fluxo Principal
+    A([Motorista Autenticado]) --> B{{"Tem caronas ativas?"}}
+    B -->|Sim| C[Acessa 'Minhas Caronas']
+    C --> D{{"Tem solicitações pendentes?"}}
+    D -->|Sim| E[Exibe Cards de Passageiros<br/>- Nome/Foto<br/>- Avaliação (★)<br/>- Curso/Faculdade]
+    E --> F{{"Ação do Motorista"}}
+    F -->|Aceitar| G[Verifica Vagas]
+    G --> H{{"Vagas disponíveis?"}}
+    H -->|Sim| I[Reserva Vaga<br/>- Atualiza contador<br/>- Bloqueia assento]
+    I --> J[Dispara Eventos:<br/>1. Notificação Push<br/>2. Email de confirmação<br/>3. Inicia RF002]
+    F -->|Recusar| K[Arquiva Solicitação<br/>+ Registra motivo opcional]
+    K --> L[Notifica Passageiro<br/>"Solicitação recusada"]
+    J & L --> M([Fim])
+
+    %% Fluxos Alternativos
+    E -->|Clica no Card| N[Modal Completo:<br/>- Histórico de caronas<br/>- 5 últimas avaliações<br/>- Contato (se público)]
+    N --> F
+    D -->|Não| O[Exibe:<br/>"Nenhuma solicitação pendente"]
+    H -->|Não| P[Exibe:<br/>"Vagas esgotadas!"<br/>+ Sugere ampliar oferta]
+
+    %% Fluxos de Exceção
+    F -->|Timeout 24h| Q[Status → Expirado<br/>Notifica ambos]
+    G -->|Conflito de dados| R[Sincroniza em tempo real<br/>Exibe:"Dados atualizados"]
+    J -->|Falha na Notificação| S[3 tentativas<br/>+ Log de erro]
+
+    %% Regras de Negócio
+    subgraph RB ["Regras de Negócio"]
+        direction TB
+        RB1["• 24h para resposta<br/>• Máx 3 recusas consecutivas<br/>• Pagamento inicia em 5min"]
+        RB2["• Notificação via FCM<br/>• Email via SendGrid<br/>• Sincronização offline"]
+    end
+
+    %% Estilos
+    style A fill:#2ecc71,stroke:#27ae60
+    style M fill:#2ecc71,stroke:#27ae60
+    style I fill:#3498db,stroke:#2980b9
+    style K fill:#e67e22,stroke:#d35400
+    style Q fill:#e74c3c,stroke:#c0392b
+    style R fill:#f39c12,stroke:#d35400
+    style RB fill:#f8f9fa,stroke:#495057
+
+    classDef success fill:#2ecc71,stroke:#27ae60
+    classDef process fill:#3498db,stroke:#2980b9
+    classDef warning fill:#f39c12,stroke:#d35400
+    classDef error fill:#e74c3c,stroke:#c0392b
+    classDef rules fill:#f8f9fa,stroke:#495057
 ```
-[Título: "Cancelar Carona para [Destino]?"]  
-[Mensagem: "Esta ação notificará todos os passageiros"]  
-[Botão "Confirmar Cancelamento" (vermelho)]  
-[Botão "Voltar" (cinza)]  
-```
 
-### **Notificação para Passageiros:**  
-```
-"ATENÇÃO: Carona para [Destino] foi cancelada"  
-"Motivo: [Opções pré-definidas]"  
-"Valor será reembolsado em até 5 dias úteis" (se aplicável)  
-```
+# Caso de Uso: UC008
 
-**Regras de Negócio:**  
-1. Janela de cancelamento: até 2 horas antes da carona  
-2. Limite de cancelamentos: máximo 3 por mês para evitar abusos  
-3. Passageiros frequentes em caronas canceladas recebem créditos de compensação  
+## Nome do Caso de Uso 
 
-Este caso de uso garante um processo justo e transparente para cancelamentos, protegendo tanto motoristas quanto passageiros.
+Criar Oferta de Carona
 
-> # # **Caso de Uso: Criar Oferta de Carona**
+##  Descrição
 
-## **1. Nome do Caso de Uso**  
-**UC008 - Criar Oferta de Carona**
-
-## **2. Descrição**  
 Permite que motoristas cadastrados criem ofertas de caronas compartilhadas, informando trajeto, horários e número de vagas disponíveis para outros universitários.
 
-## **3. Atores**  
-- **Ator Primário:** Motorista (verificado)  
-- **Ator Secundário:** Sistema de Georreferenciamento  
+## Atores 
 
-## **4. Pré-condições**  
+- Ator Primário: Motorista (verificado)  
+- Ator Secundário: Sistema de Georreferenciamento  
+
+## Pré-condições
+
 1. Usuário autenticado possui perfil de motorista verificado  
 2. Possui veículo cadastrado no sistema (opcional)  
 3. Conexão com internet ativa  
 
-## **5. Fluxo Básico**  
+## Fluxo Básico
+
 1. Motorista acessa a opção "Oferecer Carona"  
 2. Sistema exibe formulário com campos:
    - Local de partida (com autocompletar)  
@@ -935,66 +1061,131 @@ Permite que motoristas cadastrados criem ofertas de caronas compartilhadas, info
    - Disponibiliza a carona para busca  
    - Atualiza o status para "Disponível"  
 
-## **6. Fluxos Alternativos**  
+## Fluxos Alternativos 
 
-### **Alternativa 1: Carona Recorrente**  
+## Alternativa 1: Carona Recorrente
+
 1. No passo 2, motorista seleciona "Viagem recorrente"  
 2. Sistema adiciona campos:
    - Dias da semana (ex: seg/qua/sex)  
    - Período de vigência (data final)  
 
-### **Alternativa 2: Usar Localização Atual**  
+## Alternativa 2: Usar Localização Atual
+
 1. Motorista clica em "Usar minha localização atual"  
 2. Sistema preenche automaticamente o local de partida  
 
-## **7. Fluxos de Exceção**  
+## Fluxos de Exceção  
 
-### **Exceção 1: Perfil Não Verificado**  
+## Exceção 1: Perfil Não Verificado
+
 1. Se usuário tentar criar oferta sem ser motorista:
    - Sistema exibe:  
-   *"Complete sua verificação como motorista primeiro"*  
+   "Complete sua verificação como motorista primeiro"  
    - Redireciona para tela de cadastro de motorista  
 
-### **Exceção 2: Horário Inválido**  
+## Exceção 2: Horário Inválido
+
 1. Se selecionar horário passado:
    - Sistema alerta:  
-   *"Selecione um horário futuro"*  
+   "Selecione um horário futuro"  
    - Bloqueia a publicação  
 
-## **8. Pós-condições**  
+## Pós-condições
+
 1. Nova carona aparece nos resultados de busca  
 2. Motorista recebe notificação quando há solicitações  
 3. Carona é arquivada automaticamente após o horário  
 
-## **9. Requisitos Relacionados**  
-- **RF008:** Criação de ofertas por motoristas  
-- **RF001:** Integração com busca de caronas  
-- **RNF004:** Validação de localização  
+## Requisitos Relacionados
 
-## **10. Interface de Usuário**  
+- RF008: Criação de ofertas por motoristas  
+- RF001:Integração com busca de caronas  
+- RNF004: Validação de localização  
 
-### **Formulário de Criação:**  
-```
-[Mapa interativo com arrastar/soltar para ajustar pontos]  
-[Seletor de data/horário (datetime picker)]  
-[Slider para número de vagas (1-4)]  
-[Campo "Valor sugerido" com máscara monetária]  
-[Área "Observações" (textarea)]  
-[Botão "Visualizar Antes de Publicar"]  
-```
+## Interface de Usuário 
 
-### **Pré-visualização:**  
-```
-"Você está oferecendo:  
-De [Origem] para [Destino]  
-Dia [data] às [hora]  
-[Vagas] vaga(s) disponível(eis)"  
-[Botão "Publicar Agora"]  
-```
+## Formulário de Criação: 
 
-**Regras de Negócio:**  
+- Mapa interativo com arrastar/soltar para ajustar pontos
+- Seletor de data/horário (datetime picker)
+- Slider para número de vagas (1-4) 
+- Campo "Valor sugerido" com máscara monetária
+- Área "Observações" (textarea) 
+- Botão "Visualizar Antes de Publicar"
+
+## Pré-visualização: 
+
+1. "Você está oferecendo:  
+- De (Origem) para ([Destino)  
+- Dia (data) às (hora)  
+- (Vagas) vaga(s) disponível(eis)"  
+- Botão "Publicar Agora"  
+
+## Regras de Negócio:
+
 1. Limite de caronas ativas: 5 por motorista  
 2. Período mínimo para publicação: 1 hora antes do horário  
 3. Caronas com mesmo trajeto são agrupadas automaticamente  
+4. Este caso de uso otimiza a criação de caronas com ferramentas intuitivas, garantindo que apenas motoristas verificados possam oferecer viagens seguras para a comunidade universitária.
 
-Este caso de uso otimiza a criação de caronas com ferramentas intuitivas, garantindo que apenas motoristas verificados possam oferecer viagens seguras para a comunidade universitária.
+# Diagrama
+
+```mermaid
+flowchart TD
+    %% Fluxo Principal
+    A([Motorista Verificado]) --> B{{"Possui veículo cadastrado?"}}
+    B -->|Sim/Não| C[Acessa 'Oferecer Carona']
+    C --> D[Exibe Formulário Interativo]
+    D --> E[Preenche:<br/>• Partida (autocomplete)<br/>• Destino<br/>• Data/Horário<br/>• Vagas (1-4)<br/>• Valor (opcional)]
+    E --> F{{"Todos campos válidos?"}}
+    F -->|Sim| G[Exibe Pré-visualização]
+    G --> H{{"Confirmar publicação?"}}
+    H -->|Sim| I[Publica Carona]
+    I --> J[Status: Disponível]
+    J --> K[Notificações Ativadas]
+    K --> L([Carona Ativa])
+
+    %% Fluxos Alternativos
+    E -->|"Recorrente?"| M[Adiciona:<br/>• Dias da semana<br/>• Data final]
+    M --> G
+    E -->|"Usar Localização"| N[Preenche Partida via GPS]
+    N --> G
+
+    %% Fluxos de Exceção
+    B -->|Não Verificado| O[Exibe Modal:<br/>"Complete sua verificação"]
+    O --> P[Redireciona para Cadastro]
+    F -->|Horário Inválido| Q[Exibe Toast:<br/>"Selecione horário futuro"]
+    Q --> E
+    H -->|Cancelar| R[Volta para Edição]
+
+    %% Regras de Negócio
+    subgraph RN["Regras Críticas"]
+        direction TB
+        RN1["• Máx 5 caronas ativas<br/>• Publicação mínima: 1h antes<br/>• Agrupamento automático"]
+        RN2["• Validação geográfica<br/>• Cache de locais frequentes"]
+    end
+
+    %% Componentes Técnicos
+    subgraph CT["Tecnologias"]
+        direction TB
+        CT1["• Autocomplete: Places API<br/>• Datetime Picker: Flatpickr"]
+        CT2["• Mapas: Leaflet.js<br/>• Validação: Joi"]
+    end
+
+    %% Estilos
+    style A fill:#2ecc71,stroke:#27ae60
+    style L fill:#2ecc71,stroke:#27ae60
+    style I fill:#3498db,stroke:#2980b9
+    style O fill:#e74c3c,stroke:#c0392b
+    style M fill:#f39c12,stroke:#d35400
+    style RN fill:#f8f9fa,stroke:#495057
+    style CT fill:#e8f4fc,stroke:#2980b9
+
+    classDef success fill:#2ecc71,stroke:#27ae60
+    classDef process fill:#3498db,stroke:#2980b9
+    classDef warning fill:#f39c12,stroke:#d35400
+    classDef error fill:#e74c3c,stroke:#c0392b
+    classDef rules fill:#f8f9fa,stroke:#495057
+    classDef tech fill:#e8f4fc,stroke:#2980b9
+```
