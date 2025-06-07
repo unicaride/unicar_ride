@@ -88,20 +88,21 @@ Conformidade com leis locais de transporte e privacidade de dados (LGPD no Brasi
 ### 3.1 Requisitos Funcionais
 
 Para Todos os Usuários (Passageiro e Motorista)
-Autenticação: Permitir que o usuário crie uma conta (e-mail, redes sociais) e faça login.
+Autenticação: Permitir que o usuário crie uma conta e-mail e faça login.
 Perfil: Possibilitar a visualização e edição de informações pessoais do usuário.
 
 Para o Passageiro
+
 Busca de Caronas: Permitir a pesquisa de caronas informando origem, destino, data e hora.
 Solicitação: Habilitar o envio de solicitações para caronas disponíveis e a recepção de notificações sobre o status.
  Comunicação: Fornecer um chat para contato direto com o motorista após a solicitação.
 
 Para o Motorista
+
 Cadastro e Verificação: Oferecer a opção de cadastrar veículo e exigir verificação de documentos (CNH, documento do veículo, antecedentes).
 Oferta de Caronas: Permitir a criação de ofertas de carona, definindo rota, data, hora, vagas e preço.
 Gerenciamento de Solicitações: Possibilitar a aceitação ou recusa de solicitações de passageiros.
  Comunicação: Fornecer um chat para contato direto com o passageiro.
-
 
 
 ### 3.2 Requisitos Não Funcionais
@@ -133,7 +134,19 @@ O unicarride, é um sistema de software móvel projetado para conectar motorista
 
 ## 5. Casos de Uso
 
-[Diagrama de casos de uso ou referência para o documento específico]
+Casos de Uso para Passageiros
+
+Buscar Carona:
+
+Ator Principal: Passageiro
+Objetivo: Encontrar caronas disponíveis para um destino específico.
+Fluxo Resumido: Passageiro informa origem, destino, data e hora. O sistema exibe caronas compatíveis.
+
+Solicitar Carona:
+
+Ator Principal: Passageiro
+Objetivo: Pedir uma vaga em uma carona encontrada.
+Fluxo Resumido: Passageiro seleciona uma carona, envia a solicitação e aguarda a aceitação do motorista.
 
 ## 6. Priorização de Requisitos
 
