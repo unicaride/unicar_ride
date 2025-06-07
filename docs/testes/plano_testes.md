@@ -179,11 +179,67 @@ python
 
 ### 3.3 Equipe
 
-[Descrição dos papéis e responsabilidades da equipe de teste]
+Integrantes e responsabilidades
+
+[Kaio Junior]
+
+Cargo/Função: Desenvolvedor(a) Mobile / Backend.
+
+Principais Responsabilidades:
+Desenvolvimento do código do aplicativo (iOS e/ou Android).
+Criação e manutenção do servidor e das APIs.
+Integração com serviços externos (mapas, erps).
+
+[Luis Gustavo, mateus tucunduva, kaio, luiz gustavo pereira, kauan, wagner
+
+Cargo/função: Analistas de teste
+
+Principais Responsabilidades:
+
+Planejamento e definição da estratégia de testes.
+Criação e execução dos casos de teste (funcionais, performance, segurança, usabilidade, regressão).
+Gerenciamento e acompanhamento de bugs.
+Elaboração do Relatório de Plano de Teste
+Garantia da cobertura mínima de testes.
+
+[Juliana Miranda]
+
+Cargo/Função: Designer UI/UX / 
+
+Principais Responsabilidades:
+
+Criação da interface e experiência do usuário do aplicativo.
+Levantamento e documentação dos requisitos funcionais do "Rota Amiga".
+Prototipagem e testes de usabilidade iniciais.
 
 ## 4. Cronograma
 
-[Cronograma de atividades de teste]
+Fase 1: Planejamento e Design (4-6 semanas)
+(Semana 1-2)
+
+Definição detalhada dos requisitos funcionais e não funcionais (o que o app fará e como funcionará).
+
+Criação de wireframes (esboços) e protótipos de baixa fidelidade das telas do aplicativo.
+
+Planejamento da arquitetura do sistema (servidores, banco de dados, APIs).
+
+(Semana 3-4:)
+
+Design da interface do usuário (UI) e experiência do usuário (UX) em alta fidelidade.
+Definição do fluxo de navegação e interações do usuário.
+Criação do guia de estilo visual do aplicativo.
+
+(Semana 5-6)
+
+Revisão e aprovação dos designs e da arquitetura.
+Planejamento detalhado dos testes (estratégia, casos de teste iniciais).
+Configuração do ambiente de desenvolvimento.
+
+(Semana 7-12)
+
+Desenvolvimento do backend (servidor) e das APIs (conexão entre o app e o servidor).
+Implementação das funcionalidades principais (cadastro, login, busca de caronas, oferta de caronas, pagamento).
+Integração com serviços de terceiros (mapas, pagamento).
 
 ## 5. Critérios
 
@@ -255,7 +311,8 @@ Critérios de cobertura mínima
 Pelo menos um cenário de "carona encontrada" e um cenário de "nenhuma carona encontrada" devem ser testados.
 A interface da lista de resultados da busca deve ser validada para garantir que todas as informações essenciais da carona (motorista, veículo, preço) são exibidas corretamente.
 
-Nível aceitável de defeitos
+Nível aceitável de defeitos:
+
 O nível mínimo de defeitos que procuramos atingir, é de cerca de 65%, já a máxima que procuramos estar atingindo é de 80% de eficiência sem bugs, para dessa forma o aplicativo seguir seu fluxo normalmente.
 
 
@@ -276,10 +333,7 @@ Os testes foram executados em um ambiente de teste separado, utilizando dados fi
 
 ## 10. Aprovação
 
-| Nome   | Papel   | Assinatura | Data       |
-| ------ | ------- | ---------- | ---------- |
-| [Nome] | [Papel] |            | DD/MM/AAAA |
-| [Nome] | [Papel] |            | DD/MM/AAAA |
+Nosso objetivo é garantir que apenas motoristas qualificados e seguros ofereçam caronas no unicaride, dessa forma isso acaba protegendo a todos os usuários que estarem utilizando o nosso aplicativo, o nosso aplicativo também será um aplicativo que visa estar oferecendo a melhor qualidade, e conforto a todos, para isso iremos focar em pesquisas de usuário
 
 >[!WARNING]
 >A execução completa do plano de testes é essencial para garantir a qualidade do software. Qualquer desvio do plano deve ser documentado e justificado.
