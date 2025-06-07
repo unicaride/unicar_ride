@@ -1,36 +1,88 @@
-# História de Usuário_06: UC006
+# História de Usuário: UC006
 
 ## Título
-Aceitar ou recusar solicitações de vaga
+Gestão de Solicitações de Carona
 
 ## Narrativa
-
-**Como** passageiro
-**Eu quero** aceitar ou recusar solicitações de vaga,
-para escolher quem vai na minha carona.
-**Para que**
+**Como** motorista  
+**Eu quero** gerenciar solicitações de passageiros  
+**Para que** eu possa controlar quem viajará comigo
 
 ## Critérios de Aceitação
 
-1. O motorista deve ver lista de solicitações pendentes.
-2. Ao aceitar, o passageiro é adicionado à carona e recebe confirmação.
+### Fluxo Principal
+1. [x] Listagem de solicitações:
+   - Exibir foto, nome e avaliação média do passageiro
+   - Mostrar status "Pendente" com timestamp
+   - Ordenar por: 1) Avaliação 2) Proximidade
+
+2. [x] Ações disponíveis:
+   - Aceitar (altera status e reserva vaga)
+   - Recusar (opção de motivo pré-definido)
+   - Ver perfil completo
+
+3. [x] Notificações:
+   - Passageiro recebe confirmação imediata
+   - Atualização em tempo real para outros solicitantes
+
+### Validações
+4. [x] Restrições:
+   - Tempo máximo para resposta: 24h
+   - Limite de 3 recusas consecutivas
+   - Bloqueio após aceite confirmado
 
 ## Detalhes Técnicos
 
-[Detalhes técnicos relevantes para a implementação]
+### Arquitetura
+```mermaid
+sequenceDiagram
+    Motorista->>+Backend: GET /rides/{id}/requests
+    Backend->>+DB: Query pending requests
+    DB-->>-Backend: Request list
+    Backend-->>-Motorista: 200 OK
+    Motorista->>+Backend: PATCH /requests/{id}
+    Backend->>+DB: Update status
+    Backend->>+Notification: Trigger alert
+```
+
+### Componentes Frontend
+```vue
+<RequestCard 
+  v-for="request in pendingRequests"
+  :key="request.id"
+  :user="request.passenger"
+  @accept="handleAccept"
+  @reject="handleReject"
+/>
+```
+
+### Endpoints Backend
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| GET | `/rides/{id}/requests` | Lista solicitações |
+| PATCH | `/requests/{id}` | Atualiza status |
+| POST | `/notifications` | Envia confirmação |
 
 ## Dependências
-
-[Histórias ou requisitos dos quais esta história depende]
+1. **RF003**: Perfil de usuário
+2. **RF005**: Sistema de notificações
+3. **RNF002**: Banco de dados em tempo real
 
 ## Estimativa
-
-[Estimativa em Story Points]
+**Story Points:** 5  
+**Sprints:** 1 (2 semanas)
 
 ## Prioridade
-
-[MoSCoW: Must, Should, Could, Won't]
+**MoSCoW:** Must  
+**Impacto:** Alta (engajamento de usuários)
 
 ## Observações
-
-[Observações adicionais, se houver]
+1. Otimizações:
+   - Paginação para >10 solicitações
+   - Cache de perfis (15min)
+2. Segurança:
+   - Verificação de ownership
+   - Rate limiting (10 ações/minuto)
+3. Fallback:
+   - Estado offline persistente
+   - Sincronização quando reconectar
