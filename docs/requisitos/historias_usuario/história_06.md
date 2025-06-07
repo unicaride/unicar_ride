@@ -1,4 +1,4 @@
-# História de Usuário_06: [ID]
+# História de Usuário_06: UC006
 
 ## Título
 Aceitar ou recusar solicitações de vaga
