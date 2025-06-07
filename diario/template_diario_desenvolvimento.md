@@ -626,7 +626,21 @@ Atividades do GitHub Destribuida e todo mundo atualizou sua parte.
 Artefatos produzidos:
 
 História de usuários (juliana) - https://github.com/unicaride/unicar_ride/tree/4a9f94b9673dca04aa771189f2aabe57f7c22812/docs/requisitos/historias_usuario
-[Artefato 2] - [Link para o repositório ou localização]
+O que precisa ser feito no GitHub 
+
+ Template _definition (Kaio)
+ 
+ Matriz rastreabilidade: (luiz e kaio)
+ 
+ Documento de arquitetura: (Matheus cordeiro e wagner)
+ 
+Refazer caso de uso ( para fazer igual do do professor) (Mateus tucunduva e kauã kemp)
+
+Documentos de requisitos (Luis Gustavo)
+
+atualização do diário de bordo (Murilo Nogueira)
+
+Auxilio a todos para fazer a atividade e distribuir elas Juliana M - [Link para o repositório ou localização]
 Distribuição de tarefas:
 
 [Nome do membro 1]: [Tarefas realizadas]
