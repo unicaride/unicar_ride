@@ -11,7 +11,7 @@
 
 ### 1.1 Propósito
 
-Este documento descreve os requisitos funcionais e não funcionais do unicar, um aplicativo, que visa a conexão dem otoristas, que oferecem caronas a passageiros que precisam de transporte, otimizando rotas e dividindo custos. O objetivo é proporcionar uma alternativa de transporte mais acessível, sustentável e socialmente integrada, o mesmo serve para usuarios que desejam carona.
+Este documento descreve os requisitos funcionais e não funcionais do unicaride, um aplicativo, que visa a conexão dem otoristas, que oferecem caronas a passageiros que precisam de transporte, otimizando rotas e dividindo custos. O objetivo é proporcionar uma alternativa de transporte mais acessível, sustentável e socialmente integrada, o mesmo serve para usuarios que desejam carona.
 
 ### 1.2 Escopo
 
@@ -54,7 +54,7 @@ API: Application Programming Interface.
 
 ### 2.1 Perspectiva do Produto
 
-O unicarride é um sistema autônomo que se integrará com APIs de mapas (e.g., Google Maps, OpenStreetMap) para cálculo de rotas e geolocalização, Ele se posiciona como uma solução de transporte alternativa, mais barata e ecologicamente correta que táxis/aplicativos de transporte tradicionais, e mais flexível que o transporte público.
+O unicaride é um sistema autônomo que se integrará com APIs de mapas (e.g., Google Maps, OpenStreetMap) para cálculo de rotas e geolocalização, Ele se posiciona como uma solução de transporte alternativa, mais barata e ecologicamente correta que táxis/aplicativos de transporte tradicionais, e mais flexível que o transporte público.
 
 ### 2.2 Funcionalidades do Produto
 
@@ -130,7 +130,7 @@ Manutenção: O código deve ser organizado para facilitar futuras atualizaçõe
 
 ## 4. Visão Geral do Sistema
 
-O unicarride, é um sistema de software móvel projetado para conectar motoristas que oferecem vagas em seus veículos com passageiros que precisam de transporte, com foco na otimização de rotas Nosso objetivo principal é criar uma plataforma intuitiva e segura que fomente o uso de caronas compartilhadas, promovendo a sustentabilidade, a economia de recursos e a interação social entre os usuários.
+O ride, é um sistema de software móvel projetado para conectar motoristas que oferecem vagas em seus veículos com passageiros que precisam de transporte, com foco na otimização de rotas Nosso objetivo principal é criar uma plataforma intuitiva e segura que fomente o uso de caronas compartilhadas, promovendo a sustentabilidade, a economia de recursos e a interação social entre os usuários.
 
 ## 5. Casos de Uso
 
@@ -150,7 +150,7 @@ Fluxo Resumido: Passageiro seleciona uma carona, envia a solicitação e aguarda
 
 ## 6. Priorização de Requisitos
 
-O documento de requisitos do unicaride é um guia essencial para o desenvolvimento de um aplicativo que conecta motoristas e passageiros para caronas compartilhadas.
+O documento de requisitos do ide é um guia essencial para o desenvolvimento de um aplicativo que conecta motoristas e passageiros para caronas compartilhadas.
 
 Ele começa com uma Introdução que define o propósito do documento e o escopo do projeto: criar uma alternativa de transporte mais acessível, sustentável e socialmente integrada.
 
