@@ -16,17 +16,20 @@ Este documento descreve os requisitos funcionais e não funcionais do unicar, um
 ### 1.2 Escopo
 
 Nome: unicaride
+
 Propósito: Conectar motoristas que farão uma rota com passageiros que precisam de carona para o mesmo destino, otimizando viagens e reduzindo custos e tráfego.
 Público-Alvo: Pessoas que buscam transporte econômico e sustentável, e motoristas que desejam ajudar os universitarios a chegarem a seu destino.
 
 Funcionalidades Essenciais (MVP - Produto Mínimo Viável)
 Para o Passageiro:
+
 Cadastro e Login
 Busca de Caronas: Inserir origem, destino, data e hora. Visualizar caronas disponíveis com detalhes básicos (motorista, veículo)
 Solicitação e Confirmação: Enviar solicitação de carona e receber confirmação.
 Comunicação: Chat básico com o motorista após a confirmação.
 
 Para o Motorista:
+
 Cadastro e Login:
 Oferecer Carona: Informar origem, destino, data, hora, vagas disponíveis por passageiro.
 Gerenciar Solicitações: Aceitar ou recusar solicitações de passageiros.
